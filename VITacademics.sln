@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VITacademics", "VITacademics\VITacademics.csproj", "{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CE616431-7357-4381-9BA0-62D0B181F57E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|ARM.ActiveCfg = Debug|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|ARM.Build.0 = Debug|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|ARM.Deploy.0 = Debug|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|x86.ActiveCfg = Debug|x86
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|x86.Build.0 = Debug|x86
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Debug|x86.Deploy.0 = Debug|x86
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|ARM.ActiveCfg = Release|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|ARM.Build.0 = Release|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|ARM.Deploy.0 = Release|ARM
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|x86.ActiveCfg = Release|x86
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|x86.Build.0 = Release|x86
+		{FB1FFA67-10F9-4CF3-82A8-53AF47A04FDA}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
