@@ -49,7 +49,7 @@ namespace VITacademics
 
         private void img_Captcha_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            MessageBox.Show("Connection Error");
+            MessageBox.Show("Could not load Captcha.\nIf problem persists check network connection.","Error",MessageBoxButton.OK);
             prg_loading.Visibility = System.Windows.Visibility.Collapsed;
         }
 

@@ -71,18 +71,18 @@ namespace VITacademics.ViewModels
             wClient.DownloadStringAsync(new Uri(url));
         }
 
+        DateTime startTime;
         public void LoadData()
         {
-            
+            startTime = DateTime.Now;
             this.Items.Clear();
-
+            
             if (!isCache)
             {
                 //USER WANTS REFRESH LETS DO THIS
                 String url = "http://www.vitacademicsrel.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
-                System.Diagnostics.Debug.WriteLine(url);
                 loadPage(url);
-                this.Items.Add(new ItemViewModel() { prgColor = new SolidColorBrush(Colors.Green), LineOne = "Loading...", LineTwo = "", LineThree = "" });
+                this.Items.Add(new ItemViewModel() { prgColor = new SolidColorBrush(Colors.Green), Title = "Loading...", Slot = "", Type = "" });
 
             }
 
@@ -117,11 +117,11 @@ namespace VITacademics.ViewModels
                 for (int i = 0; i < subs.Count; i++) {
                     Subject t = subs[i];
                     per = Math.Round(((double)t.attended / (double) t.conducted) * 100, 1);
-                    this.Items.Add(new ItemViewModel() { Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), LineOne = t.title, LineTwo = t.slot, LineThree = t.type});
+                    this.Items.Add(new ItemViewModel() { UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
                 }
                 this.IsDataLoaded = true;
            }
-            catch (Exception e) {
+            catch (Exception) {
                 MessageBox.Show("Error occured while loading data.\nTry refreshing!", "Oops!", MessageBoxButton.OK);
             }
         }
@@ -137,15 +137,21 @@ namespace VITacademics.ViewModels
                 {
                         //SUBMIT CAPTCHA CALLBACK
                     case 0:
-                        if (res!= null && res.Contains("success"))
+                        if (res != null && res.Contains("success"))
                         {
                             //captchasub ok
                             wClient = new WebClient();
+                            GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "CaptchaSub", "Captcha_Loaded");
+                            startTime = DateTime.Now;
                             status++;
                             loadPage("http://www.vitacademicsrel.appspot.com/attj/" + dat.getReg() + "/" + dat.getDob());
                         }
                         else
+                        {
                             MessageBox.Show("Captcha error ocuured.\nIf error persists check your credentials.", "Error!", MessageBoxButton.OK);
+                            loadSaved();
+                        }
+
                         break;
 
                         //DOWNLOAD ATTENDANCE CALLBACK
@@ -154,10 +160,12 @@ namespace VITacademics.ViewModels
                         {
                             //SAVE ATTENDANCE
                             dat.saveAttendance(res);
+                            GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Attendance", "Att_Loaded");
                             //CALL MARKS
                             status++;
                             loadPage("http://www.google.com");
                             loadSaved();
+                            
                         }
                         else
                             MessageBox.Show("Could not load marks.\nIf error persists check your network.", "Error!", MessageBoxButton.OK);

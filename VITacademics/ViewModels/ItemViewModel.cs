@@ -12,12 +12,25 @@ namespace VITacademics.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
+        private string _UID;
+
+        public string UID {
+            get {
+                return _UID;
+            }
+            set {
+                if (value != _UID) {
+                    _UID = value;
+                    NotifyPropertyChanged("UID");
+                }
+            }
+        }
         private string _lineOne;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineOne
+        public string Title
         {
             get
             {
@@ -28,7 +41,7 @@ namespace VITacademics.ViewModels
                 if (value != _lineOne)
                 {
                     _lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                    NotifyPropertyChanged("Title");
                 }
             }
         }
@@ -38,7 +51,7 @@ namespace VITacademics.ViewModels
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineTwo
+        public string Slot
         {
             get
             {
@@ -49,7 +62,7 @@ namespace VITacademics.ViewModels
                 if (value != _lineTwo)
                 {
                     _lineTwo = value;
-                    NotifyPropertyChanged("LineTwo");
+                    NotifyPropertyChanged("Slot");
                 }
             }
         }
@@ -59,7 +72,7 @@ namespace VITacademics.ViewModels
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineThree
+        public string Type
         {
             get
             {
@@ -70,7 +83,7 @@ namespace VITacademics.ViewModels
                 if (value != _lineThree)
                 {
                     _lineThree = value;
-                    NotifyPropertyChanged("LineThree");
+                    NotifyPropertyChanged("Type");
                 }
             }
         }

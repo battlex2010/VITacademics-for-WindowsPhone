@@ -8,12 +8,14 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Data;
 
 namespace VITacademics
 {
     public partial class MainPage : PhoneApplicationPage
     {
         //Public variables
+        
         DataHandler dat;
         bool newUser = false;
         
@@ -24,6 +26,9 @@ namespace VITacademics
             dat = new DataHandler();
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
+
+            GoogleAnalytics.EasyTracker.GetTracker().SendView("MainPanaroma");
+
             App.ViewModel.Items.Clear();
             txt_REG.Text = (string) dat.getReg();
             if (txt_REG.Text == "" || dat.getDob().Equals(""))
@@ -34,18 +39,27 @@ namespace VITacademics
                 DateTime dater;
                 IFormatProvider culture = new System.Globalization.CultureInfo("fr-FR");
                 String date = (dat.getDob().Insert(2, "/")).Insert(5,"/");
-                System.Diagnostics.Debug.WriteLine(date);
                 dater = DateTime.Parse(date, culture);
                 datePicker.Value = dater;
+                if (dat.isVellore())
+                    chk_Vellore.IsChecked = true;
+                else
+                    chk_Chennai.IsChecked = true;
                 App.ViewModel.isCache = true;
                 App.ViewModel.LoadData();
+                
+
             }
+            
         }
 
         void messagePrompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            App.ViewModel.isCache = false;
-            App.ViewModel.LoadData();
+            if (e.Result != null)
+            {
+                App.ViewModel.isCache = false;
+                App.ViewModel.LoadData();
+            }
         }
 
         private void show_captcha()
@@ -58,7 +72,14 @@ namespace VITacademics
             messagePrompt.Show();
         }
 
-        private void PageChanged(object sender, SelectionChangedEventArgs e) { }
+        private void PageChanged(object sender, SelectionChangedEventArgs e) {
+            if (Controller.SelectedIndex == 0 || Controller.SelectedIndex == 1)
+            {
+                refresh.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+                refresh.Visibility = System.Windows.Visibility.Collapsed;
+        }
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -67,10 +88,21 @@ namespace VITacademics
             if (e.NavigationMode == NavigationMode.New) {
                 if (newUser)
                 {
+                    refresh.Visibility = System.Windows.Visibility.Collapsed;
                     Controller.DefaultItem = Controller.Items[3];
                 }
                 else
                 {
+                    if (dat.getdefPage())
+                    {
+                        chk_att.IsChecked = true;
+                        Controller.DefaultItem = Controller.Items[0];
+                    }
+                    else
+                    {
+                        chk_tod.IsChecked = true;
+                        Controller.DefaultItem = Controller.Items[1];
+                    }
                     App.ViewModel.isCache = true;
                     App.ViewModel.LoadData();
                 }
@@ -95,6 +127,11 @@ namespace VITacademics
                     dat.setCampus(true);
                 else
                     dat.setCampus(false);
+
+                if (chk_att.IsChecked == true)
+                    dat.setdefPage(true);
+                else
+                    dat.setdefPage(false);
                 
                 dat.saveDob(dob);
                 show_captcha();
@@ -110,6 +147,23 @@ namespace VITacademics
             if (dat.Length == 1)
                 dat = "0" + dat;
             return dat;
+        }
+        private void AttList_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            try
+            {
+
+                ViewModels.ItemViewModel item = ((FrameworkElement)e.OriginalSource).DataContext
+                                                                 as ViewModels.ItemViewModel;
+                NavigationService.Navigate(new Uri("/subjectDetails.xaml?selectedItem=" + item.UID, UriKind.Relative));
+            }
+            catch (Exception) {}   
+        }
+
+        private void refresh_Checked(object sender, RoutedEventArgs e)
+        {
+            show_captcha();
+            refresh.IsChecked = false;
         }
     }
 }

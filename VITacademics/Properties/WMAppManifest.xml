@@ -1,6 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="en-AU" />
+    <Language code="en-BZ" />
+    <Language code="en-CA" />
+    <Language code="en-029" />
+    <Language code="en-IN" />
+    <Language code="en-IE" />
+    <Language code="en-JM" />
+    <Language code="en-MY" />
+    <Language code="en-NZ" />
+    <Language code="en-PH" />
+    <Language code="en-SG" />
+    <Language code="en-ZA" />
+    <Language code="en-TT" />
+    <Language code="en-GB" />
+    <Language code="en-ZW" />
+  </Languages>
   <App xmlns="" ProductID="{fb1ffa67-10f9-4cf3-82a8-53af47a04fda}" Title="VITacademics" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="VITacademics author" Description="Sample description" Publisher="VITacademics" PublisherID="{2ac87608-d3ff-415f-963b-e9cef4dac670}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
@@ -23,16 +40,11 @@
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>VITacademics</Title>
-          <BackContent>
-          </BackContent>
-          <BackBackgroundImageURI>
-          </BackBackgroundImageURI>
-          <BackTitle>
-          </BackTitle>
-          <DeviceLockImageURI>
-          </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <BackContent></BackContent>
+          <BackBackgroundImageURI></BackBackgroundImageURI>
+          <BackTitle></BackTitle>
+          <DeviceLockImageURI></DeviceLockImageURI>
+          <HasLarge></HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

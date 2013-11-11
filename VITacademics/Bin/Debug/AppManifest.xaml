@@ -1,17 +1,33 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="VITacademics" EntryPointType="VITacademics.App" RuntimeVersion="4.7.50308.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="VITacademics" Source="VITacademics.dll" />
-    <AssemblyPart x:Name="Coding4Fun.Toolkit.Audio" Source="Coding4Fun.Toolkit.Audio.dll" />
     <AssemblyPart x:Name="Coding4Fun.Toolkit.Controls" Source="Coding4Fun.Toolkit.Controls.dll" />
-    <AssemblyPart x:Name="Coding4Fun.Toolkit.Net" Source="Coding4Fun.Toolkit.Net.dll" />
-    <AssemblyPart x:Name="Coding4Fun.Toolkit.Storage" Source="Coding4Fun.Toolkit.Storage.dll" />
+    <AssemblyPart x:Name="GoogleAnalytics" Source="GoogleAnalytics.dll" />
     <AssemblyPart x:Name="Microsoft.Advertising.Mobile" Source="Microsoft.Advertising.Mobile.dll" />
     <AssemblyPart x:Name="microsoft.advertising.mobile.ui" Source="microsoft.advertising.mobile.ui.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
     <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
     <AssemblyPart x:Name="System.Net.Http" Source="System.Net.Http.dll" />
     <AssemblyPart x:Name="System.Net.Http.Extensions" Source="System.Net.Http.Extensions.dll" />
     <AssemblyPart x:Name="System.Net.Http.Primitives" Source="System.Net.Http.Primitives.dll" />
+    <AssemblyPart Source="en-029/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-AU/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-BZ/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-CA/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-GB/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-IE/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-IN/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-JM/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-MY/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-NZ/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-PH/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-SG/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-TT/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-ZA/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-ZW/VITacademics.resources.dll" />
+    <AssemblyPart Source="en-GB/Microsoft.Advertising.Mobile.resources.dll" />
+    <AssemblyPart Source="en-GB/Microsoft.Phone.Controls.Toolkit.resources.dll" />
   </Deployment.Parts>
 </Deployment>

@@ -27,12 +27,23 @@ namespace VITacademics
             saveData("ATTJSON", json);
         }
 
+        public Subject getSubject(String clsnbr) {
+            List<Subject> Temp = new List<Subject>();
+            Temp = loadSubjects();
+            for (int i = 0; i < Temp.Count; i++)
+            {
+                if (Temp[i].classnbr.Equals(clsnbr))
+                    return Temp[i];
+            }
+            return new Subject();
+        }
+
         public List<Subject> loadSubjects() {
             List<Subject> Temp = new List<Subject>();
             try
             {
                 String json = ((string)Settings["ATTJSON"]);
-                System.Diagnostics.Debug.WriteLine(json);
+                
                 //READ JSON
                 JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
                 JArray root = JArray.Load(reader);
@@ -64,17 +75,42 @@ namespace VITacademics
                 saveData("isVellore", "1");
             else
                 saveData("isVellore", "0");
-
         }
+
+        public void setdefPage(bool isAtt)
+        {
+            if (isAtt)
+                saveData("defPage", "1");
+            else
+                saveData("defPage", "0");
+        }
+
+        public bool getdefPage()
+        {
+            try
+            {
+                if (Convert.ToInt32(Settings["defPage"]) == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception) { return true; }
+        }
+
+
         public string getCap() {
             try
             {
                 return ((string)Settings["CAPTCHA"]);
             }
-            catch (Exception e) { return "";}
+            catch (Exception) { return "";}
         }
         public bool isVellore() {
-            if ((int)Settings["isVellore"] == 0)
+            if (Convert.ToInt32(Settings["isVellore"]) == 0)
             {
                 return false;
             }
@@ -83,12 +119,14 @@ namespace VITacademics
             }
         }
 
+        
+
         public string getDob() {
             try
             {
             return ((string)Settings["DOB"]);
             }
-            catch (Exception e) { return ""; }
+            catch (Exception) { return ""; }
         }
         
         public string getReg() {
@@ -96,7 +134,7 @@ namespace VITacademics
             {
                 return ((string)Settings["REGNO"]);
             }
-            catch (Exception e) { return ""; }
+            catch (Exception) { return ""; }
         }
 
         public void saveReg(String reg) {

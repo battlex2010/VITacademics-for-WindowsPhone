@@ -11,6 +11,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The Coding4Fun Toolkit has multiple controls and useful items for XAML based applications.</description>
     <summary>A toolkit with multiple controls and useful items for Windows Store and Window Phone applications</summary>
+    <releaseNotes />
+    <copyright />
     <language>en-US</language>
     <tags>coding4fun silverlight winrt win8 phone wp7 wp8 metro xaml wp timespan picker toast round button message prompt color metroflow chat bubble</tags>
   </metadata>
