@@ -3,6 +3,14 @@ VITacademics-for-WindowsPhone
 
 Re-Written app for Windows Phone 8
 
+Version 2.2 - Changelog (12 Nov 2013)
+- Everthing ready except time table
+- Implemented Marks Page
+- Added advertisements
+- Implrmented VITChennai URL
+- Cleaned up the code
+- Added animation
+
 Version 2.1 - Changelog (10 Nov 2013)
 - Added this changelog
 - Added Marks Details Page

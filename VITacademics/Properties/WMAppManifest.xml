@@ -18,7 +18,7 @@
     <Language code="en-GB" />
     <Language code="en-ZW" />
   </Languages>
-  <App xmlns="" ProductID="{fb1ffa67-10f9-4cf3-82a8-53af47a04fda}" Title="VITacademics" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="VITacademics author" Description="Sample description" Publisher="VITacademics" PublisherID="{2ac87608-d3ff-415f-963b-e9cef4dac670}">
+  <App xmlns="" ProductID="{fb1ffa67-10f9-4cf3-82a8-53af47a04fda}" Title="VITacademics" RuntimeType="Silverlight" Version="2.0.0.3" Genre="apps.normal" Author="VITacademics author" Description="Sample description" Publisher="VITacademics" PublisherID="{2ac87608-d3ff-415f-963b-e9cef4dac670}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -29,6 +29,7 @@
       <Capability Name="ID_CAP_IDENTITY_USER" />
       <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
       <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -40,11 +41,16 @@
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>VITacademics</Title>
-          <BackContent></BackContent>
-          <BackBackgroundImageURI></BackBackgroundImageURI>
-          <BackTitle></BackTitle>
-          <DeviceLockImageURI></DeviceLockImageURI>
-          <HasLarge></HasLarge>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>
+          </HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

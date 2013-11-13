@@ -27,6 +27,65 @@ namespace VITacademics
             saveData("ATTJSON", json);
         }
 
+        public void saveMarks(String json) {
+            saveData("MARKSJSON", json);
+        }
+
+        public Mark loadMarks(String clsnbr) {
+            Mark mr = new Mark();
+            mr.classnbr = clsnbr;
+            List<String> mrk = new List<String>();
+
+            String json = ((string)Settings["MARKSJSON"]);
+
+            //READ JSON
+            JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
+            JArray root = JArray.Load(reader);
+            int i = 0;
+            JArray final = new JArray();
+            foreach (JArray j in root)
+            {
+                if (i == 0)
+                {
+                    foreach (JArray marks in j)
+                    {
+                        if (marks[1].ToString() == clsnbr) {
+                            final = marks;
+                            break;
+                        }
+                    }
+
+                }
+                i += 1;
+            }
+
+            if (final != null && final.Count == 18)
+            {
+                mr.islab = false;
+                mr.cat[0].name = "CAT I";
+                mr.cat[0].marks = final[6].ToString();
+
+                mr.cat[1].name = "CAT II";
+                mr.cat[1].marks = final[8].ToString();
+
+                mr.quiz[0].name = "Quiz I";
+                mr.quiz[0].marks = final[10].ToString();
+
+                mr.quiz[1].name = "Quiz II";
+                mr.quiz[1].marks = final[12].ToString();
+
+                mr.quiz[2].name = "Quiz III";
+                mr.quiz[2].marks = final[14].ToString();
+
+                mr.asgn.name = "Assignment";
+                mr.asgn.marks = final[16].ToString();      
+            }
+            else {
+                mr.islab = true;
+            }
+            return mr;
+        }
+
         public Subject getSubject(String clsnbr) {
             List<Subject> Temp = new List<Subject>();
             Temp = loadSubjects();
@@ -60,7 +119,6 @@ namespace VITacademics
                     s.regdate = ((string)j["regdate"]);
                     s.classnbr = ((string)j["classnbr"]);
                     JArray details = (JArray)j["details"];
-                    
                     s.attendance = new List<DayByDay>();
                     for (int i = 0; i < details.Count; ) {s.attendance.Add(new DayByDay(details[i].ToString(), details[i+1].ToString())); i += 2; }
                     Temp.Add(s);
@@ -118,8 +176,6 @@ namespace VITacademics
                 return true;
             }
         }
-
-        
 
         public string getDob() {
             try

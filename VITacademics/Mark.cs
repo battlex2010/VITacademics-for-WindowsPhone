@@ -24,7 +24,7 @@ namespace VITacademics
         public Test asgn = new Test();
         public Test labcam = new Test();
 
-        Mark()
+        public Mark()
         {
             for (int i = 0; i < 5; i++)
             {

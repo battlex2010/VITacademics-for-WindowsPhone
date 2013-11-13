@@ -107,7 +107,6 @@ C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\VITacademics.pdb
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\XapCacheFile.xml
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\GoogleAnalytics.dll
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\VITacademics.csprojResolveAssemblyReference.cache
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\en-029\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\en-AU\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\en-BZ\VITacademics.resources.dll
@@ -153,3 +152,4 @@ C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-TT\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZA\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZW\VITacademics.resources.dll
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\VITacademics.csprojResolveAssemblyReference.cache

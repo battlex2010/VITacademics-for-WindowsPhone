@@ -33,6 +33,152 @@ namespace VITacademics
             attended = sub.attended;
             conducted = sub.conducted;
             setPer(getPer());
+            loadAll();
+
+            MarksAdapter m = new MarksAdapter();
+            Mark mrk = dat.loadMarks(st_subnum);
+            double q_tot = 0.0, c_tot=0.0 , tot = 0.0;
+            if (!mrk.islab) {
+                
+                Brush brsh = new System.Windows.Media.SolidColorBrush(Colors.White);
+                
+                m.title = mrk.cat[0].name;
+                m.mrks = mrk.cat[0].marks + "/50";
+                c_tot += get_sum (mrk.cat[0].marks,0);
+                m.ac_mrk = get_sum(mrk.cat[0].marks, 0).ToString("#.0") + "/15";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+
+                m = nm();
+                m.title = mrk.cat[1].name;
+                m.mrks = mrk.cat[1].marks + "/50";
+                c_tot += get_sum(mrk.cat[1].marks, 0);
+                m.ac_mrk = get_sum(mrk.cat[1].marks, 0).ToString("#.0") + "/15";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+                m = nm();
+                m.title = mrk.quiz[0].name;
+                q_tot += get_sum(mrk.quiz[0].marks, 1);
+                m.mrks = mrk.quiz[0].marks + "/5";
+                m.ac_mrk = "";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+                m = nm();
+                m.title = mrk.quiz[1].name;
+                q_tot += get_sum(mrk.quiz[1].marks, 1);
+                m.mrks = mrk.quiz[1].marks + "/5";
+                m.ac_mrk = "";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+                m = nm();
+                m.title = mrk.quiz[2].name;
+                q_tot += get_sum(mrk.quiz[2].marks, 1);
+                m.mrks = mrk.quiz[2].marks + "/5";
+                m.ac_mrk = "";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+                m = nm();
+                m.title = "Assignment";
+                m.mrks = mrk.asgn.marks + "/5";
+                m.ac_mrk = "";
+                m.clour = brsh;
+                marks.Items.Add(m);
+
+                tot = c_tot + q_tot + get_sum(mrk.asgn.marks, 1);
+                m = nm();
+                m.title = "Total";
+                m.mrks = tot.ToString("#.0") + "/50";
+                m.ac_mrk = "";
+                m.clour = new System.Windows.Media.SolidColorBrush(Colors.Orange);
+                marks.Items.Add(m);
+            }
+
+            else
+            {
+                m = nm();
+                m.title = "PBL/Lab not supported.";
+                m.mrks = "";
+                m.ac_mrk = "";
+                m.clour = new System.Windows.Media.SolidColorBrush(Colors.Orange);
+                marks.Items.Add(m);
+
+            }
+        }
+
+        private double get_sum(String num ,int type) {
+            double t = 0.0;
+            try
+            {
+                if (type == 0)
+                {
+                    t = Convert.ToDouble(num);
+                    
+                    t = (15.0 / 50.0) * t;
+                    
+                    return t;
+                }
+                else if (type == 1){
+                    t = Convert.ToDouble(num);
+                   
+                    return t;
+                }
+            }
+            catch (Exception) {}
+            return t;
+        }
+        private DataAdapter nw() {
+            return new DataAdapter();
+        }
+
+        private MarksAdapter nm() {
+            return new MarksAdapter();
+        }
+
+        private void loadAll() {
+            DataHandler dat = new DataHandler();
+            
+            DataAdapter m = new DataAdapter();
+
+            m.title = "Subject Code";
+            m.description = sub.code;
+            details.Items.Add(m);
+
+            m = nw();
+            m.title = "Type";
+            m.description = sub.type;
+            details.Items.Add(m);
+
+            m = nw();
+            m.title = "Slot";
+            m.description = sub.slot;
+            details.Items.Add(m);
+
+            m = nw();
+            m.title = "Attended";
+            m.description = sub.attended.ToString();
+            details.Items.Add(m);
+
+            m = nw();
+            m.title = "Conducted";
+            m.description = sub.conducted.ToString();
+            details.Items.Add(m);
+
+            m = nw();
+            m.title = "Percentage";
+            m.description = sub.percentage;
+            details.Items.Add(m);
+
+            for (int i = sub.attendance.Count -1 ; i >= 0; i--)
+            {
+                m = nw();
+                moredetails.Items.Add(sub.attendance[i]);
+                
+            } 
         }
 
         private Color getClr(double per)
@@ -73,7 +219,6 @@ namespace VITacademics
                 textBlock1.Text = "If you miss " + t1 + " class(s)";
                 conducted += 1;
                 setPer(getPer());
-
             }
         }
 
@@ -103,6 +248,11 @@ namespace VITacademics
 
             }
 
+        }
+
+        private void adControl1_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Error.Message);
         }
 
     }

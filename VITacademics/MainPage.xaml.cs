@@ -73,12 +73,21 @@ namespace VITacademics
         }
 
         private void PageChanged(object sender, SelectionChangedEventArgs e) {
-            if (Controller.SelectedIndex == 0 || Controller.SelectedIndex == 1)
-            {
-                refresh.Visibility = System.Windows.Visibility.Visible;
+            switch (Controller.SelectedIndex) { 
+                case 0 :
+                    GoogleAnalytics.EasyTracker.GetTracker().SendView("AttendanceScreen");
+                    refresh.Visibility = System.Windows.Visibility.Visible;
+                    break;
+                case 1:
+                    GoogleAnalytics.EasyTracker.GetTracker().SendView("TodayScreen");
+                    refresh.Visibility = System.Windows.Visibility.Visible;
+                    break;
+                
+                default:
+                    refresh.Visibility = System.Windows.Visibility.Collapsed;
+                    break;
+
             }
-            else
-                refresh.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         // Load data for the ViewModel Items
@@ -164,6 +173,11 @@ namespace VITacademics
         {
             show_captcha();
             refresh.IsChecked = false;
+        }
+
+        private void adControl1_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Error.Message);
         }
     }
 }

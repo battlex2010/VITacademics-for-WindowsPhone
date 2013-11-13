@@ -6,12 +6,35 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False">
+    shell:SystemTray.IsVisible="False"
+    xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -36,16 +59,54 @@
                     <Button Grid.Row="2"  Content="-" Height="72" HorizontalAlignment="Left" Name="button3" VerticalAlignment="Bottom" Width="96" Click="button3_Click" />
                     <Button Grid.Row="2" Content="+" Height="72" HorizontalAlignment="Right" Name="button4" VerticalAlignment="Bottom" Width="96" Click="button4_Click" />
                     <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Center" Name="textBlock2" Text="If you attend 0 class" TextAlignment="Center" VerticalAlignment="Center" Width="253" />
+                    <my:AdControl Grid.Row="3" ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Center" Height="80" Width="480"/>
                 </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="details">
-                <Grid/>
+                <ListBox Margin="0,0,-12,0" Name="details">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Width="432">
+                                <TextBlock VerticalAlignment="Center" Margin="10,20"  HorizontalAlignment="Left" Text="{Binding title}" TextWrapping="Wrap" FontSize="30"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock VerticalAlignment="Center" Margin="10,20" HorizontalAlignment="Center"  Text="{Binding description}" TextWrapping="Wrap" FontSize="30"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl2" VerticalAlignment="Center" Height="80" Width="480"/>
+                </ListBox>
             </phone:PanoramaItem>
 
+            <phone:PanoramaItem Header="more details">
+                <ListBox Margin="0,0,-12,0" Name="moredetails">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Width="432">
+                                <TextBlock VerticalAlignment="Center" Margin="10,20"  HorizontalAlignment="Left" Text="{Binding date}" TextWrapping="Wrap" FontSize="30"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Name="txt_d" VerticalAlignment="Center" Margin="10,20" HorizontalAlignment="Stretch"  Text="{Binding status}" Foreground="{Binding clour}" TextWrapping="Wrap" FontSize="30"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl3" VerticalAlignment="Center" Height="80" Width="480"/>
+                </ListBox>
+            </phone:PanoramaItem>
+            
             <phone:PanoramaItem Header="marks">
-                <Grid/>
+                <ListBox Margin="0,0,-12,0" Name="marks">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Width="432">
+                                <TextBlock VerticalAlignment="Top" Margin="10,20,0,0"  HorizontalAlignment="Left" Text="{Binding title}" TextWrapping="Wrap" FontSize="35" Foreground="{Binding clour}"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <StackPanel Orientation="Horizontal" Width="432">
+                                    <TextBlock Name="txt_d" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left"  Text="{Binding mrks}" TextWrapping="Wrap" FontSize="30" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Name="txt_f" VerticalAlignment="Center" Margin="10,0" HorizontalAlignment="Center"  Text="{Binding ac_mrk}" TextWrapping="Wrap" FontSize="22" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl4" VerticalAlignment="Center" Height="80" Width="480"/>
+                </ListBox>
             </phone:PanoramaItem>
         </phone:Panorama>
 

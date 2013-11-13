@@ -16,6 +16,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False"
+    xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     >
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -72,10 +73,9 @@
                 </phone:LongListSelector>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem Header="About">
+            <phone:PanoramaItem Header="about">
                 <Grid Name="gridAbout" Margin="0,0,-22,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -86,6 +86,7 @@
                     <HyperlinkButton Height="30" Grid.Row="1" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Helpshift"   NavigateUri="http://www.vitinfo-android.helpshift.com/a/vitacademics/"/>
                     <HyperlinkButton Height="30" Grid.Row="2" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Report Issue" NavigateUri="http://vitinfo-android.helpshift.com/a/vitacademics/?contact=1"/>
                     <HyperlinkButton Height="30" Grid.Row="3" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Beta Access" NavigateUri="https://plus.google.com/communities/112543766365145422569"/>
+                    <my:AdControl Grid.Row="4" ErrorOccurred="adControl1_ErrorOccurred" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Top" Height="80" Width="480"/>
                 </Grid>
             </phone:PanoramaItem>
             

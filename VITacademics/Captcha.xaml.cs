@@ -16,9 +16,11 @@ namespace VITacademics
     public partial class Captcha : UserControl
     {
         DataHandler dat = new DataHandler();
+        DateTime startTime;
         public Captcha()
         {
             InitializeComponent();
+            startTime = DateTime.Now;
             Uri uri = new Uri("http://vitacademicsrel.appspot.com/captcha/" + dat.getReg());
             prg_loading.Visibility = System.Windows.Visibility.Visible;
             //IGNORE CACHED IMAGES
@@ -56,6 +58,7 @@ namespace VITacademics
         private void img_Captcha_Loaded(object sender, RoutedEventArgs e)
         {
             prg_loading.Visibility = System.Windows.Visibility.Collapsed;
+            GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Captcha_load", "Captcha_Image_Load");
         }
     }
 }

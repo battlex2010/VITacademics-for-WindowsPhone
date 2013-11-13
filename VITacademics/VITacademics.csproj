@@ -101,12 +101,14 @@
     <Compile Include="Captcha.xaml.cs">
       <DependentUpon>Captcha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataAdapter.cs" />
     <Compile Include="DataHandler.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mark.cs" />
+    <Compile Include="MarksAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>

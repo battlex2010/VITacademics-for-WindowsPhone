@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace VITacademics
 {
@@ -20,10 +21,16 @@ namespace VITacademics
     {
         public string date { get; set; }
         public string status { get; set; }
+
+        public Brush clour { get; set; }
         
         public DayByDay(String date, String status) {
             this.date = date;
             this.status = status;
+            if (status.Equals("Absent"))
+                this.clour = new System.Windows.Media.SolidColorBrush(Colors.Orange);
+            else
+                this.clour = new System.Windows.Media.SolidColorBrush(Colors.White);
         }
        
     }

@@ -80,7 +80,11 @@ namespace VITacademics.ViewModels
             if (!isCache)
             {
                 //USER WANTS REFRESH LETS DO THIS
-                String url = "http://www.vitacademicsrel.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
+                string url;
+                if (dat.isVellore())
+                    url = "http://www.vitacademicsrel.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
+                else
+                    url = "http://www.vitacademicsrelc.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
                 loadPage(url);
                 this.Items.Add(new ItemViewModel() { prgColor = new SolidColorBrush(Colors.Green), Title = "Loading...", Slot = "", Type = "" });
 
@@ -120,6 +124,7 @@ namespace VITacademics.ViewModels
                     this.Items.Add(new ItemViewModel() { UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
                 }
                 this.IsDataLoaded = true;
+                GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Load_UI", "Displayed_UI");
            }
             catch (Exception) {
                 MessageBox.Show("Error occured while loading data.\nTry refreshing!", "Oops!", MessageBoxButton.OK);
@@ -144,7 +149,10 @@ namespace VITacademics.ViewModels
                             GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "CaptchaSub", "Captcha_Loaded");
                             startTime = DateTime.Now;
                             status++;
-                            loadPage("http://www.vitacademicsrel.appspot.com/attj/" + dat.getReg() + "/" + dat.getDob());
+                            if (dat.isVellore()) 
+                                loadPage("http://www.vitacademicsrel.appspot.com/attj/" + dat.getReg() + "/" + dat.getDob());
+                            else
+                                loadPage("http://www.vitacademicsrelc.appspot.com/attj/" + dat.getReg() + "/" + dat.getDob());
                         }
                         else
                         {
@@ -161,11 +169,13 @@ namespace VITacademics.ViewModels
                             //SAVE ATTENDANCE
                             dat.saveAttendance(res);
                             GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Attendance", "Att_Loaded");
+                            startTime = DateTime.Now;
                             //CALL MARKS
                             status++;
-                            loadPage("http://www.google.com");
-                            loadSaved();
-                            
+                            if(dat.isVellore())
+                                loadPage("http://www.vitacademicsrel.appspot.com/marks/" + dat.getReg() + "/" + dat.getDob());
+                            else
+                                loadPage("http://www.vitacademicsrelc.appspot.com/marks/" + dat.getReg() + "/" + dat.getDob());
                         }
                         else
                             MessageBox.Show("Could not load marks.\nIf error persists check your network.", "Error!", MessageBoxButton.OK);
@@ -173,10 +183,12 @@ namespace VITacademics.ViewModels
                     
                     case 2:
                         //SAVE MARKS
+                        dat.saveMarks(res);
+                        GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Marks", "Marks_Loaded");
+                        startTime = DateTime.Now;
+                        //LOAD DATA
+                        loadSaved();
                         break;
-
-
-
                 }
             }
             catch (Exception ex) { Console.Write(ex.ToString()); MessageBox.Show("Error occured while loading attendance"); }
