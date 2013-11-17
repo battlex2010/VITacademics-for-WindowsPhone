@@ -2,6 +2,12 @@ VITacademics-for-WindowsPhone
 =============================
 
 Re-Written app for Windows Phone 8
+Version 2.3 - Changelog (17 Nov 2013)
+- Release Version
+- Submitted to Store
+- Added icons and other resources
+- Changed advertising and analytics to release
+- Added support for displaying the push message from server
 
 Version 2.2 - Changelog (12 Nov 2013)
 - Everthing ready except time table

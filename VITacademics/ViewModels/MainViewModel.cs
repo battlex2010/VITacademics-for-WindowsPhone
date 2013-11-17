@@ -6,6 +6,8 @@ using System.Net;
 using System.Windows.Media;
 using System.Windows;
 using VITacademics.Resources;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace VITacademics.ViewModels
 {
@@ -111,10 +113,34 @@ namespace VITacademics.ViewModels
                 return Colors.Green;
         }
 
+        private void loadStatus(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            try
+            {
+                String res = (string)e.Result;
+                if (res != null)
+                {
+                    JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(res));
+                    JObject j = JObject.Load(reader);
+                    int cur = ((int)j["msg_no"]);
+                    if (cur != dat.getStatusNum())
+                    {
+                        MessageBox.Show((string)j["msg_content"], (string)j["msg_title"], MessageBoxButton.OK);
+                        dat.saveStatus(res);
+                    }
+                }
+            }
+            catch (Exception) { }
+        }
+
         private void loadSaved(){
             this.Items.Clear();
             try
             {
+                WebClient cClient = new WebClient();
+                cClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(loadStatus);
+                cClient.DownloadStringAsync(new Uri("http://www.vitacademicsrel.appspot.com/status"));
+
                 double per;
                 List<Subject> subs = new List<Subject>();
                 subs = dat.loadSubjects();
@@ -182,12 +208,17 @@ namespace VITacademics.ViewModels
                         break;
                     
                     case 2:
-                        //SAVE MARKS
-                        dat.saveMarks(res);
-                        GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Marks", "Marks_Loaded");
-                        startTime = DateTime.Now;
-                        //LOAD DATA
-                        loadSaved();
+                        if (res != null)
+                        {
+                            //SAVE MARKS
+                            dat.saveMarks(res);
+                            GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Marks", "Marks_Loaded");
+                            startTime = DateTime.Now;
+                            //LOAD DATA
+                            status++;
+                            loadSaved();
+                            
+                        }
                         break;
                 }
             }

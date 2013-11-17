@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Data;
+using VITacademics.TimeTable;
 
 namespace VITacademics
 {
@@ -48,7 +49,7 @@ namespace VITacademics
                 App.ViewModel.isCache = true;
                 App.ViewModel.LoadData();
                 
-
+                
             }
             
         }

@@ -1,9 +1,4 @@
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\ApplicationIcon.png
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Assets\Tiles\IconicTileSmall.png
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\VITacademics.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\VITacademics.pdb
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\AppManifest.xaml

@@ -143,6 +143,20 @@ namespace VITacademics
                 saveData("defPage", "0");
         }
 
+        public void saveStatus(String json) {
+            saveData("SERVER_STATUS", json);
+        }
+
+        public int getStatusNum() {
+            try
+            {
+                JsonTextReader reader = new JsonTextReader(new System.IO.StringReader((string)Settings["SERVER_STATUS"]));
+                JObject j = JObject.Load(reader);
+                return ((int)j["msg_no"]);
+            }
+            catch (Exception) {return 0;}
+
+        }
         public bool getdefPage()
         {
             try

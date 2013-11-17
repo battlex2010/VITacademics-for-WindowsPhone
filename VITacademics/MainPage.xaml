@@ -57,8 +57,10 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="today">
+                
+                <TextBlock Text="Time Table coming soon!" TextWrapping="Wrap" Margin="0,0,-22,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-                <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
+                <!--phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
                         
                         <DataTemplate>
@@ -70,7 +72,8 @@
                             </StackPanel>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                </-->
+               
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="about">
@@ -86,7 +89,7 @@
                     <HyperlinkButton Height="30" Grid.Row="1" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Helpshift"   NavigateUri="http://www.vitinfo-android.helpshift.com/a/vitacademics/"/>
                     <HyperlinkButton Height="30" Grid.Row="2" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Report Issue" NavigateUri="http://vitinfo-android.helpshift.com/a/vitacademics/?contact=1"/>
                     <HyperlinkButton Height="30" Grid.Row="3" HorizontalAlignment="Center" Margin="10,30"  VerticalAlignment="Top" Width="243" TargetName="_self" Content="Beta Access" NavigateUri="https://plus.google.com/communities/112543766365145422569"/>
-                    <my:AdControl Grid.Row="4" ErrorOccurred="adControl1_ErrorOccurred" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Top" Height="80" Width="480"/>
+                    <my:AdControl Grid.Row="4" ErrorOccurred="adControl1_ErrorOccurred" ApplicationId="77d42833-22fb-4595-8124-f345b7f66ebc" AdUnitId="116816" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Top" Height="80" Width="480"/>
                 </Grid>
             </phone:PanoramaItem>
             

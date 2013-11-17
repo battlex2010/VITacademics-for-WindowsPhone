@@ -59,7 +59,7 @@
                     <Button Grid.Row="2"  Content="-" Height="72" HorizontalAlignment="Left" Name="button3" VerticalAlignment="Bottom" Width="96" Click="button3_Click" />
                     <Button Grid.Row="2" Content="+" Height="72" HorizontalAlignment="Right" Name="button4" VerticalAlignment="Bottom" Width="96" Click="button4_Click" />
                     <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Center" Name="textBlock2" Text="If you attend 0 class" TextAlignment="Center" VerticalAlignment="Center" Width="253" />
-                    <my:AdControl Grid.Row="3" ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Center" Height="80" Width="480"/>
+                    <my:AdControl Grid.Row="3" ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="77d42833-22fb-4595-8124-f345b7f66ebc" AdUnitId="116816" IsAutoRefreshEnabled="True" HorizontalAlignment="Center" Name="adControl1" VerticalAlignment="Center" Height="80" Width="480"/>
                 </Grid>
             </phone:PanoramaItem>
 
@@ -74,7 +74,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl2" VerticalAlignment="Center" Height="80" Width="480"/>
+                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="77d42833-22fb-4595-8124-f345b7f66ebc" AdUnitId="116816" IsAutoRefreshEnabled="True" HorizontalAlignment="Center" Name="adControl2" VerticalAlignment="Center" Height="80" Width="480"/>
                 </ListBox>
             </phone:PanoramaItem>
 
@@ -88,7 +88,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl3" VerticalAlignment="Center" Height="80" Width="480"/>
+                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="77d42833-22fb-4595-8124-f345b7f66ebc" AdUnitId="116816" IsAutoRefreshEnabled="True" HorizontalAlignment="Center" Name="adControl3" VerticalAlignment="Center" Height="80" Width="480"/>
                 </ListBox>
             </phone:PanoramaItem>
             
@@ -105,7 +105,6 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                    <my:AdControl ErrorOccurred="adControl1_ErrorOccurred" Margin="0,10" ApplicationId="test_client" IsAutoRefreshEnabled="True" AdUnitId="Image480_80" HorizontalAlignment="Center" Name="adControl4" VerticalAlignment="Center" Height="80" Width="480"/>
                 </ListBox>
             </phone:PanoramaItem>
         </phone:Panorama>
