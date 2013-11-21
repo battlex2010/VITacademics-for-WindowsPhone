@@ -39,12 +39,9 @@ Version 2.0 - Changelog (09 Nov 2013)
 - Better handling of all the async tasks
 - Fixed many crashes
 
+Bug Fixes (21 Nov 2013):
+- Crash when refresh is clicked
+- Added URL of Chennai Campus for captcha
+
 To Do
-- Implement Marks Page
 - Add Time Table Support
-- Add icons
-- Show loading dialog during async task (Dunno how to do)
-- Add subject details page (DONE)
-- Add Ads
-- Add support for Google Analytics (DONE)
-- Implement URL change for VITChennai

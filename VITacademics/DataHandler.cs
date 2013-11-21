@@ -182,13 +182,18 @@ namespace VITacademics
             catch (Exception) { return "";}
         }
         public bool isVellore() {
-            if (Convert.ToInt32(Settings["isVellore"]) == 0)
+            try
             {
-                return false;
+                if (Convert.ToInt32(Settings["isVellore"]) == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else {
-                return true;
-            }
+            catch (Exception) { return true; }
         }
 
         public string getDob() {

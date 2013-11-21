@@ -21,7 +21,13 @@ namespace VITacademics
         {
             InitializeComponent();
             startTime = DateTime.Now;
-            Uri uri = new Uri("http://vitacademicsrel.appspot.com/captcha/" + dat.getReg());
+            Uri uri;
+            
+            if (dat.isVellore())
+                uri = new Uri("http://vitacademicsrel.appspot.com/captcha/" + dat.getReg());
+            else
+                uri = new Uri("http://vitacademicsrelc.appspot.com/captcha/" + dat.getReg());
+
             prg_loading.Visibility = System.Windows.Visibility.Visible;
             //IGNORE CACHED IMAGES
             BitmapImage b = new BitmapImage(uri);
@@ -36,7 +42,11 @@ namespace VITacademics
         {
             prg_loading.Visibility = System.Windows.Visibility.Visible;
             img_Captcha.Source = null;
-            Uri uri = new Uri("http://vitacademicsrel.appspot.com/captcha/" + dat.getReg());
+            Uri uri;
+            if (dat.isVellore())
+                uri = new Uri("http://vitacademicsrel.appspot.com/captcha/" + dat.getReg());
+            else
+                uri = new Uri("http://vitacademicsrelc.appspot.com/captcha/" + dat.getReg());
             BitmapImage b= new BitmapImage(uri);
             b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
             img_Captcha.Source = b;
