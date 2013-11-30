@@ -147,7 +147,7 @@ namespace VITacademics.ViewModels
                 for (int i = 0; i < subs.Count; i++) {
                     Subject t = subs[i];
                     per = Math.Round(((double)t.attended / (double) t.conducted) * 100, 1);
-                    this.Items.Add(new ItemViewModel() { UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
+                    this.Items.Add(new ItemViewModel() {UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
                 }
                 this.IsDataLoaded = true;
                 GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Load_UI", "Displayed_UI");
@@ -216,8 +216,7 @@ namespace VITacademics.ViewModels
                             startTime = DateTime.Now;
                             //LOAD DATA
                             status++;
-                            loadSaved();
-                            
+                            loadSaved();   
                         }
                         break;
                 }

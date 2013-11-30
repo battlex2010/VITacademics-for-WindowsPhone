@@ -118,9 +118,6 @@ namespace VITacademics.ViewModels
             }
         }
 
-       
-
-
         private System.Windows.Media.Brush prg_color;
 
         public System.Windows.Media.Brush prgColor

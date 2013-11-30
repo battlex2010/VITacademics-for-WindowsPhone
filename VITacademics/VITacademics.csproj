@@ -119,6 +119,7 @@
     <Compile Include="subjectDetails.xaml.cs">
       <DependentUpon>subjectDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TimeTableListAdapter.cs" />
     <Compile Include="TimeTable\TimeTable.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -156,7 +157,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="analytics.xml" />
+    <Content Include="analytics.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Content Include="Assets\Tiles\FlipCycleTileMedium.png" />
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png" />

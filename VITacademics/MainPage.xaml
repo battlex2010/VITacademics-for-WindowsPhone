@@ -57,8 +57,20 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="today">
-                
-                <TextBlock Text="Time Table coming soon!" TextWrapping="Wrap" Margin="0,0,-22,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                <ListBox Margin="0,0,-12,0" Name="tt_list">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Width="432">
+                                <TextBlock VerticalAlignment="Top" Margin="10,20,0,0"  HorizontalAlignment="Left" Text="{Binding title}" TextWrapping="Wrap" FontSize="35" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <StackPanel Orientation="Horizontal" Width="432">
+                                    <TextBlock Name="txt_d" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left"  Text="{Binding slot}" TextWrapping="Wrap" FontSize="30" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Name="txt_f" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right"  Text="" TextWrapping="Wrap" FontSize="22" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--TextBlock Text="Time Table coming soon!" TextWrapping="Wrap" Margin="0,0,-22,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" /-->
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
                 <!--phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
