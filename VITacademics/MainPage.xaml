@@ -57,35 +57,30 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="today">
-                <ListBox Margin="0,0,-12,0" Name="tt_list">
+                <ListBox Margin="0,0,-12,0" Name="tt_list" ItemsSource="{Binding tt_Items}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Width="432">
-                                <TextBlock VerticalAlignment="Top" Margin="10,20,0,0"  HorizontalAlignment="Left" Text="{Binding title}" TextWrapping="Wrap" FontSize="35" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <StackPanel Orientation="Horizontal" Width="432">
-                                    <TextBlock Name="txt_d" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left"  Text="{Binding slot}" TextWrapping="Wrap" FontSize="30" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Name="txt_f" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right"  Text="" TextWrapping="Wrap" FontSize="22" Foreground="White"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
+                            <Grid Width="432" Margin="0,20,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="10,0"  HorizontalAlignment="Left" Foreground="{Binding Title_Color}" Text="{Binding TT_Title}" TextWrapping="Wrap" FontSize="30" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Name="txt_d" VerticalAlignment="Center" Margin="10,0" HorizontalAlignment="Right"  Text="{Binding TT_Slot}" TextWrapping="Wrap" FontSize="22" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Name="txt_f" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right" Text="Venue" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Name="txt_time" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left" Text="{Binding TT_Time}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Name="txt_att" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right" Text="{Binding TT_Att}" Foreground="{Binding Att_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="txt_pre" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left" Text="{Binding TT_Pre}" Foreground="{Binding Pre_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="txt_abs" VerticalAlignment="Top" Margin="30,0" HorizontalAlignment="Right" Text="{Binding TT_Abs}" Foreground="{Binding Abs_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <!--TextBlock Text="Time Table coming soon!" TextWrapping="Wrap" Margin="0,0,-22,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" /-->
-                <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-                <!--phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,-6,0,12" Height="105" Width="432">
-                                <StackPanel Width="311" Margin="8,-7,0,0">
-                                    <TextBlock Text="Temp" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
-                                    <TextBlock Text="Temp" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </-->
-               
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="about">

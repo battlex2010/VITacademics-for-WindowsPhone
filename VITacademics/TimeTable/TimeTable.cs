@@ -31,6 +31,7 @@ namespace VITacademics.TimeTable
         //Returns todays timetable
         public List<Slot> today()
         {
+           
             DateTime t = DateTime.Now;
             set_Day(t.DayOfWeek);
             return scanDay();
@@ -39,6 +40,7 @@ namespace VITacademics.TimeTable
         //Returns timetable for particular day
         public List <Slot> getForDay(DayOfWeek t)
         {
+            
             set_Day(t);
             return scanDay();
         }
@@ -46,6 +48,7 @@ namespace VITacademics.TimeTable
 
         //Set the day in current context with the slots of today.
         private void set_Day(DayOfWeek t) {
+            slts_today.Clear();
             switch (t) {
                 case DayOfWeek.Monday:
                     slts_today.AddRange(new string[] {"a1",  "f1", "c1",  "e1", "td1", "a2", "f2", "c2", "e2", "td2", "l1", "l2", "l3", "l4", "l5", "l6", "l31", "l32", "l33", "l34", "l35", "l36"});
@@ -72,6 +75,7 @@ namespace VITacademics.TimeTable
         //Scan all the subjects and match the slots
         private List<Slot> scanDay()
         {
+            Day.Clear();
             for (int i = 0; i < subs.Count; i++) {        
                 //Check if multiple
                 if (subs[i].slot.Contains("+")) {
@@ -97,6 +101,7 @@ namespace VITacademics.TimeTable
                     }
                 }
             }
+            Day = Day.OrderBy(x => x.frm_time).ToList();
             return Day;
         }
 
@@ -159,28 +164,35 @@ namespace VITacademics.TimeTable
                     to_time = to_time.Date.AddHours(13).AddMinutes(30).AddSeconds(0);
                     break;
                 case 6:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(14).AddMinutes(0).AddSeconds(0);
+                    to_time = to_time.Date.AddHours(14).AddMinutes(50).AddSeconds(0);
                     break;
                 case 7:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(15).AddMinutes(0).AddSeconds(0);
+                    to_time = to_time.Date.AddHours(15).AddMinutes(50).AddSeconds(0);
                     break;
                 case 8:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(16).AddMinutes(0).AddSeconds(0);
+                    to_time = to_time.Date.AddHours(16).AddMinutes(50).AddSeconds(0);
                     break;
                 case 9:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(17).AddMinutes(0).AddSeconds(0);
+                    to_time = to_time.Date.AddHours(17).AddMinutes(50).AddSeconds(0);
                     break;
                 case 10:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    if (isLab)
+                    {
+                        frm_time = frm_time.Date.AddHours(17).AddMinutes(50).AddSeconds(0);
+                        to_time = to_time.Date.AddHours(18).AddMinutes(40).AddSeconds(0);
+                    }
+                    else {
+                        frm_time = frm_time.Date.AddHours(18).AddMinutes(0).AddSeconds(0);
+                        to_time = to_time.Date.AddHours(18).AddMinutes(50).AddSeconds(0);
+                    }
                     break;
                 case 11:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(18).AddMinutes(40).AddSeconds(0);
+                    to_time = to_time.Date.AddHours(19).AddMinutes(30).AddSeconds(0);
                     break;
             }
 

@@ -48,7 +48,7 @@ namespace VITacademics
                     chk_Chennai.IsChecked = true;
                 App.ViewModel.isCache = true;
                 App.ViewModel.LoadData();
-                loadTT();
+                
             }
             
         }
@@ -59,7 +59,7 @@ namespace VITacademics
             {
                 App.ViewModel.isCache = false;
                 App.ViewModel.LoadData();
-                loadTT();
+               
             }
         }
 
@@ -115,27 +115,12 @@ namespace VITacademics
                     }
                     App.ViewModel.isCache = true;
                     App.ViewModel.LoadData();
-                    loadTT();
+                   
                 }
             }
-            /*if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }*/
         }
 
-        private void loadTT() {
-            tt_list.Items.Clear();
-            TimeTable.TimeTable t = new TimeTable.TimeTable();
-            foreach (Slot s in t.getForDay(DayOfWeek.Tuesday))
-            {
-                TimeTableListAdapter tt_a = new TimeTableListAdapter();
-                Subject tt_s = dat.getSubject(s.clsnbr);
-                tt_a.title = tt_s.title;
-                tt_a.slot = s.slt.ToUpper();
-                tt_list.Items.Add(tt_a);
-            }
-        }
+        
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {

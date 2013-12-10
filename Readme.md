@@ -2,6 +2,20 @@ VITacademics-for-WindowsPhone
 =============================
 
 Re-Written app for Windows Phone 8
+
+Version 2.4.1 - Changelog (10 Dec 2013)
+- Implemented UI (Table) for displaying today's time table
+- Implemented MVVM for the Time Table listview as well
+- Colours implementation for all stuff on Time Table listview
+- Fixed TimeTable class which sometimes repeated slots twice
+- Corrected all the start and end time for all slots
+- Added sorting to Time Table class according to the from time of slot
+
+Version 2.4 - Changelog (29 Nov 2013)
+- Implemented TimeTable Class
+- Basic Time Table Parsing
+- Displays Time Table of Tuesday for testing
+
 Version 2.3 - Changelog (17 Nov 2013)
 - Release Version
 - Submitted to Store
@@ -42,6 +56,3 @@ Version 2.0 - Changelog (09 Nov 2013)
 Bug Fixes (21 Nov 2013):
 - Crash when refresh is clicked
 - Added URL of Chennai Campus for captcha
-
-To Do
-- Add Time Table Support

@@ -119,10 +119,10 @@
     <Compile Include="subjectDetails.xaml.cs">
       <DependentUpon>subjectDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TimeTableListAdapter.cs" />
     <Compile Include="TimeTable\TimeTable.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\TTSignals.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

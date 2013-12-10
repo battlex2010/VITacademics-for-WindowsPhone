@@ -190,6 +190,7 @@ namespace VITacademics
             else
                 return Colors.White;
         }
+
         private void setPer(double per) {
             lbl_percent.Foreground = new SolidColorBrush(getClr(per));
             lbl_percent.Text = Convert.ToString(per) + "%";
@@ -208,7 +209,6 @@ namespace VITacademics
                 conducted -= 1;
                 setPer(getPer());
             }
-
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)

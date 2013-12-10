@@ -8,6 +8,7 @@ using System.Windows;
 using VITacademics.Resources;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using VITacademics.TimeTable;
 
 namespace VITacademics.ViewModels
 {
@@ -21,12 +22,15 @@ namespace VITacademics.ViewModels
         public MainViewModel()
         {
             this.Items = new ObservableCollection<ItemViewModel>();
+            this.tt_Items = new ObservableCollection<TTSignals>();
+
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
         public ObservableCollection<ItemViewModel> Items { get; private set; }
+        public ObservableCollection<TTSignals> tt_Items { get; private set; }
 
         private string _sampleProperty = "Sample Runtime Property Value";
         /// <summary>
@@ -78,7 +82,8 @@ namespace VITacademics.ViewModels
         {
             startTime = DateTime.Now;
             this.Items.Clear();
-            
+            this.tt_Items.Clear();
+
             if (!isCache)
             {
                 //USER WANTS REFRESH LETS DO THIS
@@ -89,7 +94,7 @@ namespace VITacademics.ViewModels
                     url = "http://www.vitacademicsrelc.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
                 loadPage(url);
                 this.Items.Add(new ItemViewModel() { prgColor = new SolidColorBrush(Colors.Green), Title = "Loading...", Slot = "", Type = "" });
-
+                this.tt_Items.Add(new TTSignals() { TT_Title = "Loading..."});
             }
 
             else {
@@ -112,6 +117,16 @@ namespace VITacademics.ViewModels
             else
                 return Colors.Green;
         }
+        private Color getClr2(double per)
+        {
+            if (per < 80 && per >= 75)
+                return Colors.Orange;
+            else if (per < 75)
+                return Colors.Red;
+            else
+                return Colors.White;
+        }
+
 
         private void loadStatus(Object sender, DownloadStringCompletedEventArgs e)
         {
@@ -135,6 +150,7 @@ namespace VITacademics.ViewModels
 
         private void loadSaved(){
             this.Items.Clear();
+            
             try
             {
                 WebClient cClient = new WebClient();
@@ -144,18 +160,61 @@ namespace VITacademics.ViewModels
                 double per;
                 List<Subject> subs = new List<Subject>();
                 subs = dat.loadSubjects();
+
+                //Load saved attendance
                 for (int i = 0; i < subs.Count; i++) {
                     Subject t = subs[i];
                     per = Math.Round(((double)t.attended / (double) t.conducted) * 100, 1);
                     this.Items.Add(new ItemViewModel() {UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
+                    
                 }
+
+                //Load today's time table
+                loadTT();
+                
                 this.IsDataLoaded = true;
                 GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Load_UI", "Displayed_UI");
            }
             catch (Exception) {
+                this.IsDataLoaded = true;
                 MessageBox.Show("Error occured while loading data.\nTry refreshing!", "Oops!", MessageBoxButton.OK);
             }
         }
+
+        public void loadTT()
+        {
+            this.tt_Items.Clear();
+
+            TimeTable.TimeTable t = new TimeTable.TimeTable();
+
+            //No Classes today!
+            if (t.today().Count == 0)
+            {
+
+                this.tt_Items.Add(new TTSignals() { TT_Title = "No classes!" });
+            }
+
+            //Have classes :)
+            else
+            {
+                
+                foreach (Slot s in t.today())
+                {
+                    Subject sub = dat.getSubject(s.clsnbr);
+                    double per = Math.Round ( (   (double)sub.attended / (double)sub.conducted) * 100, 1);
+                    double pre = Math.Round ( ( ( (double)sub.attended + 1.0) / ((double)sub.conducted + 1.0)) * 100, 0);
+                    double abs = Math.Round ( ( ( (double)sub.attended) / ((double)sub.conducted + 1.0)) * 100, 0);
+                    
+                    if(DateTime.Now > s.frm_time && DateTime.Now < s.to_time)
+                        this.tt_Items.Add(new TTSignals() {Title_Color = new SolidColorBrush(Colors.Red), Att_Color = new SolidColorBrush(getClr2(per)), Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%", TT_Title = sub.title + " (Now)", TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t") });
+                    else
+                        this.tt_Items.Add(new TTSignals() {Title_Color = new SolidColorBrush(Colors.White), Att_Color = new SolidColorBrush(getClr2(per)),  Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%",  TT_Title = sub.title, TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t")});
+                }
+            }
+
+        }
+
+        
 
         public void loadHTMLCallback(Object sender, DownloadStringCompletedEventArgs e)
         {
