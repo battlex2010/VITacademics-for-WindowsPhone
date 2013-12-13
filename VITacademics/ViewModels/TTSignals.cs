@@ -60,6 +60,24 @@ namespace VITacademics.ViewModels
             }
         }
 
+        private string tt_venue;
+
+        public string TT_Venue
+        {
+            get
+            {
+                return tt_venue;
+
+            }
+            set
+            {
+                if (value != TT_Venue)
+                {
+                    tt_venue = value; NotifyPropertyChanged("TT_Venue");
+                }
+            }
+        }
+
         private string tt_att;
         public string TT_Att
         {

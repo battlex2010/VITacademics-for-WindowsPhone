@@ -181,6 +181,7 @@ namespace VITacademics.ViewModels
             }
         }
 
+
         public void loadTT()
         {
             this.tt_Items.Clear();
@@ -208,7 +209,7 @@ namespace VITacademics.ViewModels
                     if(DateTime.Now > s.frm_time && DateTime.Now < s.to_time)
                         this.tt_Items.Add(new TTSignals() {Title_Color = new SolidColorBrush(Colors.Red), Att_Color = new SolidColorBrush(getClr2(per)), Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%", TT_Title = sub.title + " (Now)", TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t") });
                     else
-                        this.tt_Items.Add(new TTSignals() {Title_Color = new SolidColorBrush(Colors.White), Att_Color = new SolidColorBrush(getClr2(per)),  Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%",  TT_Title = sub.title, TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t")});
+                        this.tt_Items.Add(new TTSignals() {TT_Venue = sub.venue, Title_Color = new SolidColorBrush(Colors.White), Att_Color = new SolidColorBrush(getClr2(per)),  Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%",  TT_Title = sub.title, TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t")});
                 }
             }
 
@@ -222,7 +223,6 @@ namespace VITacademics.ViewModels
             {
 
                 String res = (string)e.Result;
-                
                 switch (status)
                 {
                         //SUBMIT CAPTCHA CALLBACK
@@ -269,14 +269,35 @@ namespace VITacademics.ViewModels
                     case 2:
                         if (res != null)
                         {
+
                             //SAVE MARKS
                             dat.saveMarks(res);
                             GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Marks", "Marks_Loaded");
                             startTime = DateTime.Now;
+                            status++;
+                            //CALL TimeTable
+                            if (dat.isVellore())
+                                loadPage("http://www.vitacademicsrel.appspot.com/tt/" + dat.getReg() + "/" + dat.getDob());
+                            else
+                                loadPage("http://www.vitacademicsrelc.appspot.com/tt/" + dat.getReg() + "/" + dat.getDob());
+                        }
+                        else
+                            MessageBox.Show("Could not load time table.\nIf error persists check your network.", "Error!", MessageBoxButton.OK);
+                        break;
+                    case 3:
+                        if (res != null)
+                        {
+
+                            dat.saveTT(res);
+                            GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "TimeTable", "TimeTable_Loaded");
+                            startTime = DateTime.Now;
                             //LOAD DATA
                             status++;
-                            loadSaved();   
+                            loadSaved();
                         }
+                        else
+                            MessageBox.Show("Could not load time table.\nIf error persists check your network.", "Error!", MessageBoxButton.OK);
+                       
                         break;
                 }
             }

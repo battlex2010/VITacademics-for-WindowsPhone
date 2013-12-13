@@ -22,6 +22,11 @@ namespace VITacademics
             Settings.Save();
         }
 
+        public void saveTT(String json) {
+            json = json.Substring(6);
+            saveData("TTJSON", json);
+        }
+
         public void saveAttendance(String json) {
             json = json.Substring(6);
             saveData("ATTJSON", json);
@@ -102,6 +107,7 @@ namespace VITacademics
             try
             {
                 String json = ((string)Settings["ATTJSON"]);
+                String ttjson = ((string)Settings["TTJSON"]);
                 
                 //READ JSON
                 JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
@@ -118,6 +124,15 @@ namespace VITacademics
                     s.percentage = ((string)j["percentage"]);
                     s.regdate = ((string)j["regdate"]);
                     s.classnbr = ((string)j["classnbr"]);
+                    
+                    //Get venue from TTJSON
+                    JsonTextReader reader2 = new JsonTextReader(new System.IO.StringReader(ttjson));
+                    JArray root2 = JArray.Load(reader2);
+                    
+                    foreach (JObject js in root) {
+                        if ((string)js["class_nbr"] == s.classnbr)
+                            s.venue = ((string)js["venue"]);
+                    }
                     JArray details = (JArray)j["details"];
                     s.attendance = new List<DayByDay>();
                     for (int i = 0; i < details.Count; ) {s.attendance.Add(new DayByDay(details[i].ToString(), details[i+1].ToString())); i += 2; }

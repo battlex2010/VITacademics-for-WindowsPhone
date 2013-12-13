@@ -9,7 +9,7 @@ namespace VITacademics
 {
     public class Subject
     {
-        public String title, code, type, slot, regdate, classnbr, atten_last_status, atten_last_date,percentage, attendance_details;
+        public String title, code, type, slot, regdate, classnbr, atten_last_status, atten_last_date,percentage, attendance_details,venue;
         public int attended, conducted;
         public int attendance_length;
         public bool att_valid;

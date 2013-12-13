@@ -147,4 +147,3 @@ C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-TT\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZA\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZW\VITacademics.resources.dll
-C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\VITacademics.csprojResolveAssemblyReference.cache
