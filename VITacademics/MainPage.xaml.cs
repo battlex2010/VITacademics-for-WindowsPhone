@@ -96,10 +96,14 @@ namespace VITacademics
         {
             base.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New) {
+
+                //NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
+
                 if (newUser)
                 {
-                    refresh.Visibility = System.Windows.Visibility.Collapsed;
-                    Controller.DefaultItem = Controller.Items[3];
+                    NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
+                    //refresh.Visibility = System.Windows.Visibility.Collapsed;
+                    //Controller.DefaultItem = Controller.Items[3];
                 }
                 else
                 {

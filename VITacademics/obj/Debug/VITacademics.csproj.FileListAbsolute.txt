@@ -147,3 +147,10 @@ C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-TT\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZA\VITacademics.resources.dll
 C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\en-ZW\VITacademics.resources.dll
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Parse.dll
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Parse.Phone.dll
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Parse.xml
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\Bin\Debug\Parse.Phone.xml
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\WelcomeScreens\Page1.g.cs
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\WelcomeScreens\Page2.g.cs
+C:\Users\Saurabh\Documents\Visual Studio 2012\Projects\VITacademics\VITacademics\obj\Debug\WelcomeScreens\Page3.g.cs

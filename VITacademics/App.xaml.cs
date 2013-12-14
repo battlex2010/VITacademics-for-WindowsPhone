@@ -10,6 +10,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using VITacademics.Resources;
 using VITacademics.ViewModels;
+using Parse;
 
 namespace VITacademics
 {
@@ -55,6 +56,9 @@ namespace VITacademics
 
             // Language display initialization
             InitializeLanguage();
+
+            ParseClient.Initialize("pslFDPvG2NmCKEW3v20X9QtgOabxtAvsetd3Keq6", "iGkM9KgWkDXDc8AmbLN7FAShftrZtm3d6t4RAQEy");
+            ParseFacebookUtils.Initialize("239533019505160");
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)

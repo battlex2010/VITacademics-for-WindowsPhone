@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="VITacademics.WelcomeScreens.Page2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/VITacademics;component/Assets/PanoramaBackground.png"/>
+        </Grid.Background>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="VITacademics" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="settings" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid Name="gridSettings" Grid.Row="1" Margin="12,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Height="30" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0" Name="lbl_REG" Text="Registration number:" VerticalAlignment="Top" Width="243" />
+            <TextBox Name="txt_REG" Grid.Row ="1" Height="Auto" HorizontalAlignment="Left" Margin="10,0" Text="" VerticalAlignment="Top" Width="414"/>
+            <TextBlock Height="30" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0" Name="textBlock1" Text="Enter date of birth:" VerticalAlignment="Top" Width="243" />
+            <toolkit:DatePicker Grid.Row="3" x:Name="datePicker" Value="2/3/2010" Margin="10,0" Height="74" Width="416" />
+            <TextBlock Height="30" Grid.Row="4" HorizontalAlignment="Left" Margin="10,0" Name="lbl_capmpus" Text="Campus:" VerticalAlignment="Top" Width="243" />
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal">
+                <RadioButton Grid.Row="5" Margin="10,0" x:Name="chk_Vellore" IsChecked="True" Height="Auto" Width ="190"  HorizontalAlignment="Left" Content="Vellore" />
+                <RadioButton Grid.Row="5" Margin="10,0" x:Name="chk_Chennai" IsChecked="False" Height="Auto" Width ="Auto" HorizontalAlignment="Right" Content="Chennai" />
+            </StackPanel>
+
+            <TextBlock Height="30" Grid.Row="6" HorizontalAlignment="Left" Margin="10,0" Name="lbl_defscreen" Text="Default Screen:" VerticalAlignment="Top" Width="243" />
+            <StackPanel Grid.Row="7" Orientation="Horizontal">
+                <RadioButton Grid.Row="7" Margin="10,0" x:Name="chk_tod" IsChecked="False" Height="Auto" Width ="190" HorizontalAlignment="Left" Content="Today" />
+                <RadioButton Grid.Row="7" Margin="10,0" x:Name="chk_att" IsChecked="True" Height="Auto" Width ="Auto" HorizontalAlignment="Right" Content="Attendance" />
+            </StackPanel>
+            <Button Content="Sign In" Grid.Row="8" Height="72" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Bottom"  Width="213" Click="button1_Click" Margin="10,0" />
+            <ProgressBar Grid.Row="9" Visibility="Collapsed" Foreground="Orange" Name="prg_loading" Margin="0,0" IsIndeterminate="True" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="416" />
+            
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -76,32 +76,39 @@ namespace VITacademics.TimeTable
         private List<Slot> scanDay()
         {
             Day.Clear();
-            for (int i = 0; i < subs.Count; i++) {        
-                //Check if multiple
-                if (subs[i].slot.Contains("+")) {
-                    string[] solts = subs[i].slot.Split('+');
-                    foreach (string s in solts)
+            try
+            {
+                for (int i = 0; i < subs.Count; i++)
+                {
+                    //Check if multiple
+                    if (subs[i].slot.Contains("+"))
                     {
-                        if (slts_today.Contains(s.ToLower()))
-                        {            
-                            
-                            Slot slt = new Slot(s.ToLower(), subs[i].classnbr);
-                            slt.setTimes(slts_today.IndexOf(s.ToLower()));
+                        string[] solts = subs[i].slot.Split('+');
+                        foreach (string s in solts)
+                        {
+                            if (slts_today.Contains(s.ToLower()))
+                            {
+
+                                Slot slt = new Slot(s.ToLower(), subs[i].classnbr);
+                                slt.setTimes(slts_today.IndexOf(s.ToLower()));
+                                Day.Add(slt);
+                            }
+                        }
+                    }
+
+                    //Match with today's slots
+                    else
+                    {
+                        if (slts_today.Contains(subs[i].slot.ToLower()))
+                        {
+                            Slot slt = new Slot(subs[i].slot.ToLower(), subs[i].classnbr);
+                            slt.setTimes(slts_today.IndexOf(subs[i].slot.ToLower()));
                             Day.Add(slt);
                         }
                     }
                 }
-               
-                //Match with today's slots
-                else {
-                    if (slts_today.Contains(subs[i].slot.ToLower())) {
-                        Slot slt = new Slot(subs[i].slot.ToLower(), subs[i].classnbr);
-                        slt.setTimes(slts_today.IndexOf(subs[i].slot.ToLower()));
-                        Day.Add(slt);
-                    }
-                }
-            }
-            Day = Day.OrderBy(x => x.frm_time).ToList();
+                Day = Day.OrderBy(x => x.frm_time).ToList();
+            }catch{}
             return Day;
         }
 
