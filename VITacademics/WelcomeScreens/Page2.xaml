@@ -43,6 +43,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock Height="30" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0" Name="lbl_REG" Text="Registration number:" VerticalAlignment="Top" Width="243" />
             <TextBox Name="txt_REG" Grid.Row ="1" Height="Auto" HorizontalAlignment="Left" Margin="10,0" Text="" VerticalAlignment="Top" Width="414"/>
@@ -62,7 +63,9 @@
             </StackPanel>
             <Button Content="Sign In" Grid.Row="8" Height="72" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Bottom"  Width="213" Click="button1_Click" Margin="10,0" />
             <ProgressBar Grid.Row="9" Visibility="Collapsed" Foreground="Orange" Name="prg_loading" Margin="0,0" IsIndeterminate="True" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="416" />
-            
+
+            <TextBlock Height="180" Grid.Row="10" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="10,0" Name="lbl_notice" Text=".." VerticalAlignment="Top" Width="243" />
+
         </Grid>
     </Grid>
 

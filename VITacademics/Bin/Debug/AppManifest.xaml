@@ -2,6 +2,7 @@
   <Deployment.Parts>
     <AssemblyPart x:Name="VITacademics" Source="VITacademics.dll" />
     <AssemblyPart x:Name="Coding4Fun.Toolkit.Controls" Source="Coding4Fun.Toolkit.Controls.dll" />
+    <AssemblyPart x:Name="Facebook" Source="Facebook.dll" />
     <AssemblyPart x:Name="GoogleAnalytics" Source="GoogleAnalytics.dll" />
     <AssemblyPart x:Name="Microsoft.Advertising.Mobile" Source="Microsoft.Advertising.Mobile.dll" />
     <AssemblyPart x:Name="microsoft.advertising.mobile.ui" Source="microsoft.advertising.mobile.ui.dll" />

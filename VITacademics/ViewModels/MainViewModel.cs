@@ -9,6 +9,8 @@ using VITacademics.Resources;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using VITacademics.TimeTable;
+using Facebook;
+using Parse;
 
 namespace VITacademics.ViewModels
 {
@@ -23,6 +25,7 @@ namespace VITacademics.ViewModels
         {
             this.Items = new ObservableCollection<ItemViewModel>();
             this.tt_Items = new ObservableCollection<TTSignals>();
+            this.fb_Items = new ObservableCollection<FbList>();
 
         }
 
@@ -31,6 +34,7 @@ namespace VITacademics.ViewModels
         /// </summary>
         public ObservableCollection<ItemViewModel> Items { get; private set; }
         public ObservableCollection<TTSignals> tt_Items { get; private set; }
+        public ObservableCollection<FbList> fb_Items { get; private set; }
 
         private string _sampleProperty = "Sample Runtime Property Value";
         /// <summary>
@@ -83,11 +87,14 @@ namespace VITacademics.ViewModels
             startTime = DateTime.Now;
             this.Items.Clear();
             this.tt_Items.Clear();
+            this.fb_Items.Clear();
 
+            loadFriends();
             if (!isCache)
             {
                 //USER WANTS REFRESH LETS DO THIS
                 string url;
+                
                 if (dat.isVellore())
                     url = "http://www.vitacademicsrel.appspot.com/captchasub/" + dat.getReg() + "/" + dat.getDob() + "/" + dat.getCap();
                 else
@@ -95,6 +102,7 @@ namespace VITacademics.ViewModels
                 loadPage(url);
                 this.Items.Add(new ItemViewModel() { prgColor = new SolidColorBrush(Colors.Green), Title = "Loading...", Slot = "", Type = "" });
                 this.tt_Items.Add(new TTSignals() { TT_Title = "Loading..."});
+                
             }
 
             else {
@@ -107,6 +115,52 @@ namespace VITacademics.ViewModels
             
             
             
+        }
+
+        private async void loadFriends() {
+            //Check if opted in to fb
+            this.fb_Items.Clear();
+
+            
+
+            if (dat.isFb())
+            {
+                try
+                {
+                    
+                    var fb = new FacebookClient();
+                    
+                    fb.AccessToken = ParseFacebookUtils.AccessToken;
+
+                    var me = await fb.GetTaskAsync("me");
+                    
+                    
+                    FbAPI fa = new FbAPI();
+                    
+                    string id = fa.fbMe(me.ToString(), "id");
+                    string name = fa.fbMe(me.ToString(), "name");
+
+                    var pic = await fb.GetTaskAsync(id + "/?fields=picture&type=large");
+
+                    Uri u = new Uri(fa.getDP_uri(pic.ToString()));
+
+                    this.fb_Items.Clear();
+                    this.fb_Items.Add(new FbList() { Fb_Name = name , Fb_Pic = u });
+
+                    me = await fb.GetTaskAsync("biocross");
+                    name = fa.fbMe(me.ToString(), "name");
+                    id = fa.fbMe(me.ToString(), "id");
+                    pic = await fb.GetTaskAsync(id + "/?fields=picture&type=large");
+                    
+                    this.fb_Items.Add(new FbList() { Fb_Name = name, Fb_Pic = new Uri(fa.getDP_uri(pic.ToString()))});
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine("FBERROR: "  + e.ToString());
+                }
+                //Lets do this
+
+
+            }
+            else { }
         }
         
         private Color getClr (double per){
@@ -207,7 +261,7 @@ namespace VITacademics.ViewModels
                     double abs = Math.Round ( ( ( (double)sub.attended) / ((double)sub.conducted + 1.0)) * 100, 0);
                     
                     if(DateTime.Now > s.frm_time && DateTime.Now < s.to_time)
-                        this.tt_Items.Add(new TTSignals() {Title_Color = new SolidColorBrush(Colors.Red), Att_Color = new SolidColorBrush(getClr2(per)), Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%", TT_Title = sub.title + " (Now)", TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t") });
+                        this.tt_Items.Add(new TTSignals() { TT_Venue = sub.venue ,Title_Color = new SolidColorBrush(Colors.Red), Att_Color = new SolidColorBrush(getClr2(per)), Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%", TT_Title = sub.title + " (Now)", TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t") });
                     else
                         this.tt_Items.Add(new TTSignals() {TT_Venue = sub.venue, Title_Color = new SolidColorBrush(Colors.White), Att_Color = new SolidColorBrush(getClr2(per)),  Pre_Color = new SolidColorBrush(getClr2(pre)), Abs_Color = new SolidColorBrush(getClr2(abs)), TT_Pre = "Go: " + pre.ToString() + "%", TT_Abs = "Miss: " + abs.ToString() + "%",  TT_Title = sub.title, TT_Slot = s.slt.ToUpper(), TT_Att = sub.percentage, TT_Time = s.frm_time.ToString("t") + " - " + s.to_time.ToString("t")});
                 }

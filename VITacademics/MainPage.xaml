@@ -83,6 +83,36 @@
                 </ListBox>
             </phone:PanoramaItem>
 
+            <phone:PanoramaItem Header="friends">
+                <ListBox Margin="0,0,-12,0" Name="fb_flist" ItemsSource="{Binding fb_Items}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="432" Margin="0,20,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="10,0" Foreground="White"  HorizontalAlignment="Left" Text="{Binding Fb_Name}" TextWrapping="Wrap" FontSize="30" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"  Foreground="Orange"  HorizontalAlignment="Left" Text="In Class" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="10,0"  Foreground="White"  HorizontalAlignment="Left" Text="Free in 10m" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                
+                                <Image Grid.Row="0" Grid.Column="1" Name="txt_d" Source="{Binding Fb_Pic}" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right"/>
+                                <!--TextBlock Grid.Row="1" Grid.Column="1" Name="txt_f" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right" Text="{Binding TT_Venue}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Name="txt_time" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left" Text="{Binding TT_Time}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Name="txt_att" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right" Text="{Binding TT_Att}" Foreground="{Binding Att_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="txt_pre" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Left" Text="{Binding TT_Pre}" Foreground="{Binding Pre_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="txt_abs" VerticalAlignment="Top" Margin="30,0" HorizontalAlignment="Right" Text="{Binding TT_Abs}" Foreground="{Binding Abs_Color}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextExtraLargeStyle}"/-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
             <phone:PanoramaItem Header="about">
                 <Grid Name="gridAbout" Margin="0,0,-22,0">
                     <Grid.RowDefinitions>

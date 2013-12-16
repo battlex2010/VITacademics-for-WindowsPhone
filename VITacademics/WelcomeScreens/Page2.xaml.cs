@@ -24,11 +24,12 @@ namespace VITacademics.WelcomeScreens
         {
             InitializeComponent();
             loadSettings();
+            lbl_notice.Text = "Please enter credentials for the same person who logged in with facebook.";
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            
+            lbl_notice.Text = "";
             prg_loading.Visibility = Visibility.Visible;
             button1.IsEnabled = false;
             saveIt();
@@ -125,6 +126,7 @@ namespace VITacademics.WelcomeScreens
                 prg_loading.Visibility = Visibility.Collapsed;
                 button1.IsEnabled = true;
                 MessageBox.Show("Unknown Error! Please check network and your credentials then try again!");
+                lbl_notice.Text = "Please enter credentials for the same person who logged in with facebook.";
             }
         }
 
@@ -145,7 +147,9 @@ namespace VITacademics.WelcomeScreens
             {
                 prg_loading.Visibility = Visibility.Collapsed;
                 button1.IsEnabled = true;
+
                 MessageBox.Show("Unknown Error! Please check network and your credentials then try again!");
+                lbl_notice.Text = "Please enter credentials for the same person who logged in with facebook.";
             }
         }
 
@@ -169,6 +173,7 @@ namespace VITacademics.WelcomeScreens
                 prg_loading.Visibility = Visibility.Collapsed;
                 button1.IsEnabled = true;
                 MessageBox.Show("Unknown Error! Please check network and your credentials then try again!");
+                lbl_notice.Text = "Please enter credentials for the same person who logged in with facebook.";
             }
         }
 
@@ -190,6 +195,7 @@ namespace VITacademics.WelcomeScreens
                 prg_loading.Visibility = Visibility.Collapsed;
                 button1.IsEnabled = true;
                 MessageBox.Show("Unknown Error! Please check network and your credentials then try again!");
+                lbl_notice.Text = "Please enter credentials for the same person who logged in with facebook.";
             }
         }
 

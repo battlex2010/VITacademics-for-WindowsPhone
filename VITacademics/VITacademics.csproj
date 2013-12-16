@@ -120,6 +120,7 @@
       <DependentUpon>subjectDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeTable\TimeTable.cs" />
+    <Compile Include="ViewModels\FbList.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\TTSignals.cs" />
@@ -225,6 +226,9 @@
     <Reference Include="Coding4Fun.Toolkit.Controls, Version=2.0.7.0, Culture=neutral, PublicKeyToken=c5fd7b72b1a17ce4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.7\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.4.2\lib\wp8\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="GoogleAnalytics">
       <HintPath>..\packages\GoogleAnalyticsSDK.1.1.01\lib\windowsphone8\GoogleAnalytics.dll</HintPath>

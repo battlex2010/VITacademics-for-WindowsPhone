@@ -129,8 +129,8 @@ namespace VITacademics.TimeTable
         //Set time for the slot
         public void setTimes(int index) {
             //Set today's date
-            frm_time = DateTime.Now;
-            to_time = DateTime.Now;
+            frm_time = new DateTime(2009, 3, 2, 0, 0, 0);
+            to_time = new DateTime(2009, 3, 2, 0, 0, 0);
             
             //Check if it is lab
             if(slt.StartsWith("l"))
@@ -139,67 +139,69 @@ namespace VITacademics.TimeTable
             //change the time keeping the date same
             switch (index) {
                 case 0:
-                    frm_time = frm_time.Date.AddHours(8).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(8).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(8);
+                    to_time = to_time.Date.AddHours(8).AddMinutes(50);
                     break;
                 case 1:
-                    frm_time = frm_time.Date.AddHours(9).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(9).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(9);
+                    to_time = to_time.Date.AddHours(9).AddMinutes(50);
                     break;
                 case 2: 
-                    frm_time = frm_time.Date.AddHours(10).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(10).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(10);
+                    to_time = to_time.Date.AddHours(10).AddMinutes(50);
                     break;
                 case 3: 
-                    frm_time = frm_time.Date.AddHours(11).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(11).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(11);
+                    to_time = to_time.Date.AddHours(11).AddMinutes(50);
                     break;
                 case 4:
+                    
                     if (isLab)
                     {
-                        frm_time = frm_time.Date.AddHours(11).AddMinutes(50).AddSeconds(0);
-                        to_time = to_time.Date.AddHours(12).AddMinutes(40).AddSeconds(0);
+                        frm_time = frm_time.Date.AddHours(11).AddMinutes(50);
+                        to_time = to_time.Date.AddHours(12).AddMinutes(40);
                     }
                     else
                     {
-                        frm_time = frm_time.Date.AddHours(12).AddMinutes(0).AddSeconds(0);
-                        to_time = to_time.Date.AddHours(12).AddMinutes(50).AddSeconds(0);
+                        frm_time = frm_time.Date.AddHours(12);
+                        to_time = to_time.Date.AddHours(12).AddMinutes(50);
                     }
+
                     break;
                 case 5:
-                    frm_time = frm_time.Date.AddHours(12).AddMinutes(40).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(13).AddMinutes(30).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(12).AddMinutes(40);
+                    to_time = to_time.Date.AddHours(13).AddMinutes(30);
                     break;
                 case 6:
-                    frm_time = frm_time.Date.AddHours(14).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(14).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(14);
+                    to_time = to_time.Date.AddHours(14).AddMinutes(50);
                     break;
                 case 7:
-                    frm_time = frm_time.Date.AddHours(15).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(15).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(15);
+                    to_time = to_time.Date.AddHours(15).AddMinutes(50);
                     break;
                 case 8:
-                    frm_time = frm_time.Date.AddHours(16).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(16).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(16);
+                    to_time = to_time.Date.AddHours(16).AddMinutes(50);
                     break;
                 case 9:
-                    frm_time = frm_time.Date.AddHours(17).AddMinutes(0).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(17).AddMinutes(50).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(17);
+                    to_time = to_time.Date.AddHours(17).AddMinutes(50);
                     break;
                 case 10:
                     if (isLab)
                     {
-                        frm_time = frm_time.Date.AddHours(17).AddMinutes(50).AddSeconds(0);
-                        to_time = to_time.Date.AddHours(18).AddMinutes(40).AddSeconds(0);
+                        frm_time = frm_time.Date.AddHours(17).AddMinutes(50);
+                        to_time = to_time.Date.AddHours(18).AddMinutes(40);
                     }
                     else {
-                        frm_time = frm_time.Date.AddHours(18).AddMinutes(0).AddSeconds(0);
-                        to_time = to_time.Date.AddHours(18).AddMinutes(50).AddSeconds(0);
+                        frm_time = frm_time.Date.AddHours(18);
+                        to_time = to_time.Date.AddHours(18).AddMinutes(50);
                     }
                     break;
                 case 11:
-                    frm_time = frm_time.Date.AddHours(18).AddMinutes(40).AddSeconds(0);
-                    to_time = to_time.Date.AddHours(19).AddMinutes(30).AddSeconds(0);
+                    frm_time = frm_time.Date.AddHours(18).AddMinutes(40);
+                    to_time = to_time.Date.AddHours(19).AddMinutes(30);
                     break;
             }
 

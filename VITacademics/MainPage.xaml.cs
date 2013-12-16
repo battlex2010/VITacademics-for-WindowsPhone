@@ -46,8 +46,8 @@ namespace VITacademics
                     chk_Vellore.IsChecked = true;
                 else
                     chk_Chennai.IsChecked = true;
-                App.ViewModel.isCache = true;
-                App.ViewModel.LoadData();
+                //App.ViewModel.isCache = true;
+                //App.ViewModel.LoadData();
                 
             }
             

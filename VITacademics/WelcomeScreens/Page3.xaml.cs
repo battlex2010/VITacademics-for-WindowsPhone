@@ -14,6 +14,7 @@ namespace VITacademics.WelcomeScreens
 {
     public partial class Page3 : PhoneApplicationPage
     {
+        DataHandler dat = new DataHandler();
         public Page3()
         {
             InitializeComponent();
@@ -27,9 +28,11 @@ namespace VITacademics.WelcomeScreens
                 ParseUser user = await ParseFacebookUtils.LogInAsync(browser, null);
                 NavigationService.Navigate(new Uri("/WelcomeScreens/Page2.xaml", UriKind.Relative));
                 browser.Visibility = Visibility.Collapsed;
+                dat.setFb(true);
             }
             catch
             {
+                dat.setFb(false);
                 btn_login.Visibility = Visibility.Visible;
                 browser.Visibility = Visibility.Collapsed;
                 //cancelled?
@@ -39,6 +42,7 @@ namespace VITacademics.WelcomeScreens
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             LoadFB();
             //#btn_refresh.Visibility = Visibility.Visible; (Acts wierd)
             btn_login.Visibility = Visibility.Collapsed;
@@ -47,6 +51,7 @@ namespace VITacademics.WelcomeScreens
 
         private void btn_skip_Click(object sender, RoutedEventArgs e)
         {
+            dat.setFb(false);
             NavigationService.Navigate(new Uri("/WelcomeScreens/Page2.xaml", UriKind.Relative));
         }
 

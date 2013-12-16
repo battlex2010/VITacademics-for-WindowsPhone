@@ -9,9 +9,50 @@ using System.Threading.Tasks;
 
 namespace VITacademics
 {
+
+    public class FbAPI {
+        public string fbMe(String json, String key)
+        {
+            try
+            {
+                JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
+                JObject root = JObject.Load(reader);
+                
+                return root.GetValue(key).ToString();
+            }
+            catch { return "http://error"; }
+
+        }
+
+        public string getDP_uri(string json) {
+            {
+                try
+                {
+                    JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
+                    
+                    JObject root = JObject.Load(reader);
+
+                    JObject pic = (JObject)root.GetValue("picture");
+
+                    System.Diagnostics.Debug.WriteLine("PIC IS: " + pic.ToString());
+                    root = (JObject)pic.GetValue("data");
+                    System.Diagnostics.Debug.WriteLine("ROOT IS: " + root.ToString());
+                    return root.GetValue("url").ToString();
+                }
+                catch { return "http://error"; }
+
+            }
+        
+        }
+
+        
+    }
     public class DataHandler
     {
         private static IsolatedStorageSettings Settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
+
+        
+
         
         public void saveData(String key, String dat) 
         {
@@ -150,6 +191,14 @@ namespace VITacademics
                 saveData("isVellore", "0");
         }
 
+        public void setFb(bool isFb)
+        {
+            if (isFb)
+                saveData("isFb", "1");
+            else
+                saveData("isFb", "0");
+        }
+
         public void setdefPage(bool isAtt)
         {
             if (isAtt)
@@ -186,6 +235,22 @@ namespace VITacademics
                 }
             }
             catch (Exception) { return true; }
+        }
+
+        public bool isFb()
+        {
+            try
+            {
+                if (Convert.ToInt32(Settings["isFb"]) == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception) { return false; }
         }
 
 

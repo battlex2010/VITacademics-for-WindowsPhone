@@ -95,7 +95,7 @@ namespace VITacademics
             // Ensure that application state is restored appropriately
             if (!App.ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+               // App.ViewModel.LoadData();
             }
         }
 
