@@ -166,5 +166,6 @@
             </phone:PanoramaItem>
         </phone:Panorama>
         <Controls:RoundToggleButton ImageSource="/Toolkit.Content/ref.png" Margin="374,220,30,517" Checked="refresh_Checked"  Name="refresh" />
+       
     </Grid>
 </phone:PhoneApplicationPage>

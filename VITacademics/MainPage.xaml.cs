@@ -10,6 +10,7 @@ using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Data;
 using VITacademics.TimeTable;
+using System.Windows.Media.Imaging;
 
 namespace VITacademics
 {
@@ -78,9 +79,17 @@ namespace VITacademics
                 case 0 :
                     GoogleAnalytics.EasyTracker.GetTracker().SendView("AttendanceScreen");
                     refresh.Visibility = System.Windows.Visibility.Visible;
+                    refresh.ImageSource = new BitmapImage(new Uri(@"/Toolkit.Content/ref.png" , UriKind.RelativeOrAbsolute));
                     break;
                 case 1:
                     GoogleAnalytics.EasyTracker.GetTracker().SendView("TodayScreen");
+                    refresh.ImageSource = new BitmapImage(new Uri(@"/Toolkit.Content/menu.png", UriKind.RelativeOrAbsolute));
+                    refresh.Visibility = System.Windows.Visibility.Visible;
+                    break;
+                
+                case 2:
+                    GoogleAnalytics.EasyTracker.GetTracker().SendView("FriendsScreen");
+                    refresh.ImageSource = new BitmapImage(new Uri(@"/Toolkit.Content/wrench.png", UriKind.RelativeOrAbsolute));
                     refresh.Visibility = System.Windows.Visibility.Visible;
                     break;
                 
@@ -96,14 +105,9 @@ namespace VITacademics
         {
             base.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New) {
-
-                //NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
-
                 if (newUser)
                 {
                     NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
-                    //refresh.Visibility = System.Windows.Visibility.Collapsed;
-                    //Controller.DefaultItem = Controller.Items[3];
                 }
                 else
                 {
@@ -119,7 +123,6 @@ namespace VITacademics
                     }
                     App.ViewModel.isCache = true;
                     App.ViewModel.LoadData();
-                   
                 }
             }
         }
@@ -175,7 +178,15 @@ namespace VITacademics
 
         private void refresh_Checked(object sender, RoutedEventArgs e)
         {
-            show_captcha();
+            switch (Controller.SelectedIndex) { 
+                case 0:
+                    show_captcha();
+                    break;
+                case 1:
+                    break;
+                default:
+                    break;
+            }
             refresh.IsChecked = false;
         }
 

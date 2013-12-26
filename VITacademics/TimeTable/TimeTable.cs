@@ -129,12 +129,16 @@ namespace VITacademics.TimeTable
         //Set time for the slot
         public void setTimes(int index) {
             //Set today's date
-            frm_time = new DateTime(2009, 3, 2, 0, 0, 0);
-            to_time = new DateTime(2009, 3, 2, 0, 0, 0);
+            frm_time = DateTime.Now;
+            to_time = DateTime.Now;
             
             //Check if it is lab
-            if(slt.StartsWith("l"))
-                isLab = true;
+              if (this.slt.StartsWith("l"))
+              
+              {
+                  index = index - 10;
+                  isLab = true;
+              }
 
             //change the time keeping the date same
             switch (index) {
@@ -155,7 +159,6 @@ namespace VITacademics.TimeTable
                     to_time = to_time.Date.AddHours(11).AddMinutes(50);
                     break;
                 case 4:
-                    
                     if (isLab)
                     {
                         frm_time = frm_time.Date.AddHours(11).AddMinutes(50);
@@ -204,6 +207,8 @@ namespace VITacademics.TimeTable
                     to_time = to_time.Date.AddHours(19).AddMinutes(30);
                     break;
             }
+
+            
 
         }
     }

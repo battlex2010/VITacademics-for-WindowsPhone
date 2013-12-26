@@ -3,6 +3,11 @@ VITacademics-for-WindowsPhone
 
 Re-Written app for Windows Phone 8
 
+Version 2.4.2 - Changelog (26 Dec 2013)
+- Fixed TimeTable Bug
+- Added buttons for TT and Friends
+- Time Table fully stable
+
 Version 2.4.1 - Changelog (10 Dec 2013)
 - Implemented UI (Table) for displaying today's time table
 - Implemented MVVM for the Time Table listview as well

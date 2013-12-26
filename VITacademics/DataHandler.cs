@@ -52,8 +52,6 @@ namespace VITacademics
         private static IsolatedStorageSettings Settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
 
         
-
-        
         public void saveData(String key, String dat) 
         {
             if (Settings.Contains(key))
@@ -64,7 +62,7 @@ namespace VITacademics
         }
 
         public void saveTT(String json) {
-            json = json.Substring(6);
+            //json = json.Substring(6);
             saveData("TTJSON", json);
         }
 
@@ -180,7 +178,7 @@ namespace VITacademics
                     Temp.Add(s);
                 }
             }
-            catch (Exception e) { Console.Out.WriteLine(e.Message.ToString()); }
+            catch (Exception e) { Console.Out.WriteLine("LOADSUBJECTS() ERROR: " + e.ToString()); }
             return Temp;
         }
 
@@ -218,7 +216,9 @@ namespace VITacademics
                 JObject j = JObject.Load(reader);
                 return ((int)j["msg_no"]);
             }
-            catch (Exception) {return 0;}
+            catch (Exception) {
+                
+                return 0;}
 
         }
         public bool getdefPage()
