@@ -98,8 +98,8 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="10,0" Foreground="White"  HorizontalAlignment="Left" Text="{Binding Fb_Name}" TextWrapping="Wrap" FontSize="30" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"  Foreground="Orange"  HorizontalAlignment="Left" Text="In Class" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="10,0"  Foreground="White"  HorizontalAlignment="Left" Text="Free in 10m" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"  Foreground="Orange"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="10,0"  Foreground="White"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" FontSize="25" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                 
                                 <Image Grid.Row="0" Grid.Column="1" Name="txt_d" Source="{Binding Fb_Pic}" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right"/>
                                 <!--TextBlock Grid.Row="1" Grid.Column="1" Name="txt_f" VerticalAlignment="Top" Margin="10,0" HorizontalAlignment="Right" Text="{Binding TT_Venue}" TextWrapping="Wrap" FontSize="22"  Style="{StaticResource PhoneTextSubtleStyle}"/>

@@ -107,7 +107,8 @@ namespace VITacademics
             if (e.NavigationMode == NavigationMode.New) {
                 if (newUser)
                 {
-                    NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
+                    //NavigationService.Navigate(new Uri("/WelcomeScreens/Page1.xaml", UriKind.Relative));
+                    Controller.DefaultItem = Controller.Items[4];
                 }
                 else
                 {

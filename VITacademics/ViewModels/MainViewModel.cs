@@ -112,19 +112,16 @@ namespace VITacademics.ViewModels
             
             // Sample data; replace with real data
            
-            
-            
-            
         }
 
         private async void loadFriends() {
             //Check if opted in to fb
             this.fb_Items.Clear();
-
-            
-
+            this.fb_Items.Add(new FbList() { Fb_Name = "Coming soon"});
+            /*
             if (dat.isFb())
             {
+               
                 try
                 {
                     
@@ -147,7 +144,7 @@ namespace VITacademics.ViewModels
                     this.fb_Items.Clear();
                     this.fb_Items.Add(new FbList() { Fb_Name = name , Fb_Pic = u });
 
-                    me = await fb.GetTaskAsync("biocross");
+                    me = await fb.GetTaskAsync("biocrosss");
                     name = fa.fbMe(me.ToString(), "name");
                     id = fa.fbMe(me.ToString(), "id");
                     pic = await fb.GetTaskAsync(id + "/?fields=picture&type=large");
@@ -160,7 +157,7 @@ namespace VITacademics.ViewModels
 
 
             }
-            else { }
+            else { }*/
         }
         
         private Color getClr (double per){
