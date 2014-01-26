@@ -119,7 +119,11 @@
     <Compile Include="subjectDetails.xaml.cs">
       <DependentUpon>subjectDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TimeTable\Full_TT.xaml.cs">
+      <DependentUpon>Full_TT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeTable\TimeTable.cs" />
+    <Compile Include="TimeTable\TimeTableAdapter.cs" />
     <Compile Include="ViewModels\FbList.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -152,6 +156,10 @@
       <SubType>Designer</SubType>
     </DesignData>
     <Page Include="subjectDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimeTable\Full_TT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,7 +17,6 @@ namespace VITacademics
     public partial class MainPage : PhoneApplicationPage
     {
         //Public variables
-        
         DataHandler dat;
         bool newUser = false;
         
@@ -49,21 +48,21 @@ namespace VITacademics
                     chk_Chennai.IsChecked = true;
                 //App.ViewModel.isCache = true;
                 //App.ViewModel.LoadData();
-                
             }
             
         }
 
+        //MessageBox callback
         void messagePrompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.Result != null)
             {
                 App.ViewModel.isCache = false;
-                App.ViewModel.LoadData();
-               
+                App.ViewModel.LoadData();  
             }
         }
 
+        //Show message box
         private void show_captcha()
         {
             MessagePrompt messagePrompt = new MessagePrompt();
@@ -74,6 +73,7 @@ namespace VITacademics
             messagePrompt.Show();
         }
 
+        //Called on page scroll
         private void PageChanged(object sender, SelectionChangedEventArgs e) {
             switch (Controller.SelectedIndex) { 
                 case 0 :
@@ -181,9 +181,15 @@ namespace VITacademics
         {
             switch (Controller.SelectedIndex) { 
                 case 0:
+                    //Refresh
                     show_captcha();
                     break;
                 case 1:
+                    //Full Time Table
+                    NavigationService.Navigate(new Uri("/TimeTable/Full_TT.xaml", UriKind.Relative));
+                    break;
+                case 2:
+                    //TODO: Friends Settings
                     break;
                 default:
                     break;

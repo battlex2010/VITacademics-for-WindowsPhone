@@ -31,7 +31,6 @@ namespace VITacademics.TimeTable
         //Returns todays timetable
         public List<Slot> today()
         {
-           
             DateTime t = DateTime.Now;
             set_Day(t.DayOfWeek);
             return scanDay();
