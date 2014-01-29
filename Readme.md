@@ -2,6 +2,11 @@ VITacademics-for-WindowsPhone
 =============================
 
 Re-Written app for Windows Phone 8
+
+Version 2.4.4 (Bug Fixes) - Changelog (29 Jan 2014)
+- Timetable timings fix
+- Added animations to Full Timetable page
+
 Version 2.4.4 - Changelog (26 Jan 2014)
 - Added Full TimeTable Page
 - Fixed analytics link

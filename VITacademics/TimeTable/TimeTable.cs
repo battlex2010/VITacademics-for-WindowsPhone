@@ -53,7 +53,7 @@ namespace VITacademics.TimeTable
                     slts_today.AddRange(new string[] {"a1",  "f1", "c1",  "e1", "td1", "a2", "f2", "c2", "e2", "td2", "l1", "l2", "l3", "l4", "l5", "l6", "l31", "l32", "l33", "l34", "l35", "l36"});
                     break;
                 case DayOfWeek.Tuesday:
-                    slts_today.AddRange(new string[] { "b1", "g1", "d1", "ta1", "tf1", "b2", "g2", "d2", "ta2", "tf2", "l7", "l8", "l9", "l10", "l11", "l12", "l37", "l38", "l39", "l40", "l41", "l42"});
+                    slts_today.AddRange(new string[] {"b1", "g1", "d1", "ta1", "tf1", "b2", "g2", "d2", "ta2", "tf2", "l7", "l8", "l9", "l10", "l11", "l12", "l37", "l38", "l39", "l40", "l41", "l42"});
                     break;
                 case DayOfWeek.Wednesday:
                     slts_today.AddRange(new string[] {"c1","f1","e1","tb1","tg1","c2","f2","e2","tb2","tg2","l13","l14","l15","l16","l17","l18","l43","l44","l45","l46","l47","l48"});
@@ -132,12 +132,17 @@ namespace VITacademics.TimeTable
             to_time = DateTime.Now;
             
             //Check if it is lab
-              if (this.slt.StartsWith("l"))
-              
-              {
-                  index = index - 10;
-                  isLab = true;
-              }
+            if (this.slt.StartsWith("l"))
+            {
+                index = index - 10;
+                isLab = true;
+            }
+            else
+            {
+                if (index > 4)
+                    index += 1;
+            
+            }
 
             //change the time keeping the date same
             switch (index) {
