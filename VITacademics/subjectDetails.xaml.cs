@@ -173,12 +173,16 @@ namespace VITacademics
             m.description = sub.percentage;
             details.Items.Add(m);
 
-            for (int i = sub.attendance.Count -1 ; i >= 0; i--)
+            try
             {
-                m = nw();
-                moredetails.Items.Add(sub.attendance[i]);
-                
-            } 
+                for (int i = sub.attendance.Count - 1; i >= 0; i--)
+                {
+                    m = nw();
+                    moredetails.Items.Add(sub.attendance[i]);
+
+                }
+            }
+            catch (Exception) { }
         }
 
         private Color getClr(double per)
