@@ -78,7 +78,11 @@ namespace VITacademics.ViewModels
         private void loadPage(String url) {
             wClient = new WebClient();
             wClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(loadHTMLCallback);
-            wClient.DownloadStringAsync(new Uri(url));
+            try { 
+                wClient.DownloadStringAsync(new Uri(url));
+            }catch(Exception e){System.Diagnostics.Debug.WriteLine(e.InnerException);}
+        
+        
         }
 
         DateTime startTime;
@@ -213,15 +217,17 @@ namespace VITacademics.ViewModels
                 subs = dat.loadSubjects();
 
                 //Load saved attendance
-                for (int i = 0; i < subs.Count; i++) {
-                    Subject t = subs[i];
-                    per = Math.Round(((double)t.attended / (double) t.conducted) * 100, 1);
-                    this.Items.Add(new ItemViewModel() {UID = t.classnbr, Percentage = t.percentage, prgVal = (int) per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type});
-                    
-                }
+                  for (int i = 0; i < subs.Count; i++)
+                    {
+                        Subject t = subs[i];
+                        per = Math.Round(((double)t.attended / (double)t.conducted) * 100, 1);
+                        this.Items.Add(new ItemViewModel() { UID = t.classnbr, Percentage = t.percentage, prgVal = (int)per, prgColor = new SolidColorBrush(getClr(per)), Title = t.title, Slot = t.slot, Type = t.type });
+                    }
 
-                //Load today's time table
-                loadTT();
+                    //Load today's time table
+                
+                    loadTT();
+                
                 
                 this.IsDataLoaded = true;
                 GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "Load_UI", "Displayed_UI");
@@ -272,8 +278,9 @@ namespace VITacademics.ViewModels
         {
             try
             {
-
-                String res = (string)e.Result;
+                String res = null;
+                if(e.Result != null)
+                    res = (string)e.Result;
                 switch (status)
                 {
                         //SUBMIT CAPTCHA CALLBACK
@@ -329,8 +336,18 @@ namespace VITacademics.ViewModels
                             //CALL TimeTable
                             if (dat.isVellore())
                                 loadPage("http://www.vitacademicsrel.appspot.com/tt/" + dat.getReg() + "/" + dat.getDob());
-                            else
-                                loadPage("http://www.vitacademicsrelc.appspot.com/tt/" + dat.getReg() + "/" + dat.getDob());
+                            
+                            else{
+                                
+                                GoogleAnalytics.EasyTracker.GetTracker().SendTiming(DateTime.Now.Subtract(startTime), "Refresh", "TimeTable", "TimeTable_Loaded");
+                                startTime = DateTime.Now;
+                                //LOAD DATA
+                                status++;
+                                loadSaved();
+                            }
+                            
+                            
+                                //loadPage("http://www.vitacademicsrelc.appspot.com/tt/" + dat.getReg() + "/" + dat.getDob());
                         }
                         else
                             MessageBox.Show("Could not load time table.\nIf error persists check your network.", "Error!", MessageBoxButton.OK);
@@ -352,7 +369,7 @@ namespace VITacademics.ViewModels
                         break;
                 }
             }
-            catch (Exception ex) { Console.Write(ex.ToString()); MessageBox.Show("Error occured while loading attendance"); }
+            catch (Exception ex) { Console.Write(ex.InnerException); MessageBox.Show("Error occured while loading attendance!"); }
            
         }
 

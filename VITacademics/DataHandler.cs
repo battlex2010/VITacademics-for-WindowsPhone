@@ -17,7 +17,6 @@ namespace VITacademics
             {
                 JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
                 JObject root = JObject.Load(reader);
-                
                 return root.GetValue(key).ToString();
             }
             catch { return "http://error"; }
@@ -64,15 +63,18 @@ namespace VITacademics
         public void saveTT(String json) {
             //json = json.Substring(6);
             saveData("TTJSON", json);
+            System.Diagnostics.Debug.WriteLine("TT: " + json);
         }
 
         public void saveAttendance(String json) {
             json = json.Substring(6);
             saveData("ATTJSON", json);
+            System.Diagnostics.Debug.WriteLine("JSON: " + json);
         }
 
         public void saveMarks(String json) {
             saveData("MARKSJSON", json);
+            System.Diagnostics.Debug.WriteLine("MARKS: " + json);
         }
 
         public Mark loadMarks(String clsnbr) {
@@ -132,7 +134,7 @@ namespace VITacademics
                     mr.islab = true;
                 }
             }
-            catch (Exception) { }
+            catch (Exception e) { Console.Out.WriteLine("LOADMARKS() ERROR: " + e.ToString()); }
             return mr;
         }
 
@@ -152,7 +154,9 @@ namespace VITacademics
             try
             {
                 String json = ((string)Settings["ATTJSON"]);
-                String ttjson = ((string)Settings["TTJSON"]);
+                String ttjson = "";
+                if(isVellore())
+                    ttjson = ((string)Settings["TTJSON"]);
                 
                 //READ JSON
                 JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(json));
@@ -171,12 +175,16 @@ namespace VITacademics
                     s.classnbr = ((string)j["classnbr"]);
                     
                     //Get venue from TTJSON
-                    JsonTextReader reader2 = new JsonTextReader(new System.IO.StringReader(ttjson));
-                    JArray root2 = JArray.Load(reader2);
-                    
-                    foreach (JObject js in root) {
-                        if ((string)js["class_nbr"] == s.classnbr)
-                            s.venue = ((string)js["venue"]);
+                    if (isVellore())
+                    {
+                        JsonTextReader reader2 = new JsonTextReader(new System.IO.StringReader(ttjson));
+                        JArray root2 = JArray.Load(reader2);
+
+                        foreach (JObject js in root)
+                        {
+                            if ((string)js["class_nbr"] == s.classnbr)
+                                s.venue = ((string)js["venue"]);
+                        }
                     }
                     JArray details = (JArray)j["details"];
                     s.attendance = new List<DayByDay>();
